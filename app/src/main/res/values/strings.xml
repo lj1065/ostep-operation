@@ -1,0 +1,29 @@
+<resources>
+    <string name="app_name">operation</string>
+    <string name="activity_login">activity_login</string>
+    <string name="title_activity_login">登录</string>
+    <string name="prompt_email">邮箱</string>
+    <string name="prompt_username">用户名/手机号</string>
+    <string name="prompt_phone">请输入手机号</string>
+    <string name="prompt_password">密码</string>
+    <string name="action_sign_in">登录</string>
+    <string name="action_sign_in_short">登录</string>
+    <string name="welcome">"欢迎 !"</string>
+    <string name="invalid_username">用户没注册</string>
+    <string name="invalid_password">密码必须大于5个字母</string>
+    <string name="login_failed">"登录失败"</string>
+    <string name="title_activity_init_account">请设置密码</string>
+    <string name="verify_code">请输入验证码</string>
+    <string name="set_new_password">请设置密码</string>
+    <string name="send_verify_code">发送验证码</string>
+    <string name="set_confirm">确认</string>
+    <string name="send_code">send_code</string>
+    <string name="phone">phone</string>
+    <string name="newpassword">newpassword</string>
+    <string name="title_activity_dilivery_tab">DiliveryTabActivity</string>
+    <string name="tab_text_1">Tab 1</string>
+    <string name="tab_text_2">Tab 2</string>
+    <string name="title_activity_delivery_tab">DeliveryTabActivity</string>
+    <string name="tabhost">tabhost</string>
+    <string name="tabcontent">tabcontent</string>
+</resources>
