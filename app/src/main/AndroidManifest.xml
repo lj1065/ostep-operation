@@ -1,10 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.ostep.operation">
-
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com">
+    <!--add-->
+    <supports-screens
+        android:anyDensity="true"
+        android:largeScreens="true"
+        android:normalScreens="true"
+        android:resizeable="true"
+        android:smallScreens="true" />
+    <!-- 读sd卡 -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <!-- 写sd卡 -->
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_GPS" />
+    <!-- 获取精确gps位置 -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <!-- 获取粗略位置 -->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <!-- 允许程序访问额外的定位提供者指令获取模拟定位信息 -->
+    <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" />
+    <!-- 网络链接 -->
     <uses-permission android:name="android.permission.INTERNET" />
+    <!-- 获取网络状态 -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <!-- 更改wifi连状态 -->
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <!-- 获取wifi状态 -->
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <!-- 后台服务 -->
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <!-- 摄像头 -->
+    <uses-permission android:name="android.permission.CAMERA"/>
+    <!-- 录音 -->
+    <uses-permission android:name="android.permission.RECORD_AUDIO"/>
+    <!-- 导航中省电设置 -->
+    <uses-permission android:name="android.permission.WRITE_SETTINGS"
+        tools:ignore="ProtectedPermissions" />
+    <!-- OpenGLES 2.0 -->
+
+<!--    <uses-permission android:name="android.permission.INTERNET" />-->
     <uses-permission android:name="android.permission.BLUETOOTH" />
     <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+
+    <!--add-->
+    <uses-feature
+        android:glEsVersion="0x00020000"
+        android:required="true" />
+    <!--add-->
 
     <uses-feature
         android:name="android.hardware.bluetooth_le"
@@ -16,19 +59,24 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme"
+
+        android:hardwareAccelerated="true"
+        android:largeHeap="true"
+        android:usesCleartextTraffic="true"
+        >
         <activity
-            android:name=".ui.delivery.CustomTabActivity"
+            android:name="com.ostep.operation.ui.delivery.CustomTabActivity"
             android:label="18菜配送"/>
         <activity
-            android:name=".ui.delivery.BottomTabLayoutActivity"
+            android:name="com.ostep.operation.ui.delivery.BottomTabLayoutActivity"
             android:label="BottomTabLayoutActivity"/>
         <activity
-            android:name=".ui.account.InitAccountActivity"
+            android:name="com.ostep.operation.ui.account.InitAccountActivity"
             android:label="@string/title_activity_init_account"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".ui.login.LoginActivity"
+            android:name="com.ostep.operation.ui.login.LoginActivity"
             android:label="@string/title_activity_login">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -36,6 +84,47 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <uses-library android:name="org.apache.http.legacy" android:required="false"/>
+
+        <meta-data
+            android:name="BaiduMobAd_STAT_ID"
+            android:value="48ae76de3f" />
+        <meta-data
+            android:name="com.baidu.lbsapi.API_KEY"
+            android:value="YI2wyjvvbb0aGuls9kueu8Taz1Y9zx71" />
+
+        <activity
+            android:name="com.baidu.navi.sdkdemo.activity.DemoNaviSettingActivity" />
+
+        <activity
+            android:name="com.baidu.navi.sdkdemo.activity.DemoMainActivity"
+            android:configChanges="orientation|screenSize|keyboard|keyboardHidden"
+            android:label="@string/sdk_name" />
+
+        <activity
+            android:name="com.baidu.navi.sdkdemo.activity.DemoNaviActivity"
+            android:configChanges="orientation|screenSize|keyboard|keyboardHidden"
+            android:label="@string/sdk_name" />
+
+        <activity
+            android:name="com.baidu.navi.sdkdemo.activity.DemoGuideActivity"
+            android:configChanges="orientation|screenSize|keyboard|keyboardHidden"
+            android:label="@string/title_route_guide_demo"
+            android:theme="@android:style/Theme.NoTitleBar" />
+
+        <activity android:name="com.baidu.navi.sdkdemo.activity.DemoExtGpsActivity"
+            android:configChanges="orientation|screenSize|keyboard|keyboardHidden"
+            android:theme="@android:style/Theme.NoTitleBar" />
+
+        <activity android:name="com.baidu.navi.sdkdemo.activity.DemoDrivingActivity"
+            android:configChanges="orientation|screenSize|keyboard|keyboardHidden"
+            android:theme="@android:style/Theme.NoTitleBar" />
+        <service android:name="com.baidu.mapclient.liteapp.ForegroundService" />
+        <activity android:name="com.baidu.mapclient.liteapp.LiteActivity"/>
+
+
+
     </application>
 
 </manifest>

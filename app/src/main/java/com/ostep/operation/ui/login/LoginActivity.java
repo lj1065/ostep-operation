@@ -24,7 +24,10 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.alibaba.fastjson.JSONObject;
-import com.ostep.operation.R;
+import com.baidu.mapclient.liteapp.LiteActivity;
+//import com.ostep.operation.R;
+import com.R;
+import com.baidu.navi.sdkdemo.activity.DemoMainActivity;
 import com.ostep.operation.ui.account.InitAccountActivity;
 import com.ostep.operation.ui.delivery.CustomTabActivity;
 import com.step.operation.common.CommonConstants;
@@ -57,6 +60,8 @@ public class LoginActivity extends AppCompatActivity {
         final EditText passwordEditText = findViewById(R.id.password);
         final Button loginButton = findViewById(R.id.activity_login);
         final ProgressBar loadingProgressBar = findViewById(R.id.loading);
+
+
 
         loginViewModel.getLoginFormState().observe(this, new Observer<LoginFormState>() {
             @Override
@@ -164,6 +169,20 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
     }
+
+    //add
+    public void open1(View v){
+        String s = "open";
+        Toast.makeText( LoginActivity.this,s, Toast.LENGTH_LONG).show();
+        Log.e("sdfs","1111111111111111111111111111111111111111");
+
+        Intent intent = new Intent(LoginActivity.this, DemoMainActivity.class);
+        startActivity(intent);
+
+        Log.e("sdfs","22222222222222222222222222222222222222222");
+    }
+
+    //add
 
     private boolean checkSetPwd(String username) {
         String fullCheckPwdUrl = UrlConstants.CHECK_PWD_URL+username;

@@ -10,7 +10,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.alibaba.fastjson.JSONArray;
-import com.ostep.operation.R;
+//import com.ostep.operation.R;
+
+import com.R;
 
 import java.util.List;
 import java.util.Map;

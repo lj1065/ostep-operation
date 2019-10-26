@@ -10,7 +10,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
 import com.google.android.material.tabs.TabLayout;
-import com.ostep.operation.R;
+import com.R;
 import com.step.operation.common.DataGenerator;
 
 public class BottomTabLayoutActivity extends AppCompatActivity   {

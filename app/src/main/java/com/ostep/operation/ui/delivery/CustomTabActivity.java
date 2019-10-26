@@ -10,7 +10,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
 import com.alibaba.fastjson.JSON;
-import com.ostep.operation.R;
+//import com.ostep.operation.R;
+import com.R;
+
 import com.step.operation.common.CommonConstants;
 import com.step.operation.common.DataGenerator;
 import com.step.operation.common.UserInfo;

@@ -8,7 +8,9 @@ import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
 
-import com.ostep.operation.R;
+//import com.ostep.operation.R;
+import com.R;
+
 import com.ostep.operation.ui.delivery.HistoryDeliveryFragment;
 import com.ostep.operation.ui.delivery.TodayDeliveryFragment;
 import com.ostep.operation.ui.delivery.ProfileFragment;

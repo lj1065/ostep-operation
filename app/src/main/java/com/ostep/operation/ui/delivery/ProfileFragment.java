@@ -9,7 +9,9 @@ import android.widget.TextView;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import com.ostep.operation.R;
+//import com.ostep.operation.R;
+
+import com.R;
 
 /**
  * Created by zhouwei on 17/4/23.
