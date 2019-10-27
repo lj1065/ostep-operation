@@ -123,7 +123,13 @@
         <service android:name="com.baidu.mapclient.liteapp.ForegroundService" />
         <activity android:name="com.baidu.mapclient.liteapp.LiteActivity"/>
 
-
+        <activity android:name="com.baidu.navi.sdkdemo.activity.location.MyLocationActivity"/>
+        <activity android:name="com.baidu.navi.sdkdemo.activity.location.MyLocation"/>
+        <service
+            android:name="com.baidu.location.f"
+            android:enabled="true"
+            android:process=":remote">
+        </service>
 
     </application>
 

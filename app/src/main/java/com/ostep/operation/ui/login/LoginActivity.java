@@ -24,10 +24,13 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.alibaba.fastjson.JSONObject;
+import com.baidu.mapapi.SDKInitializer;
 import com.baidu.mapclient.liteapp.LiteActivity;
 //import com.ostep.operation.R;
 import com.R;
 import com.baidu.navi.sdkdemo.activity.DemoMainActivity;
+import com.baidu.navi.sdkdemo.activity.location.MyLocation;
+import com.baidu.navi.sdkdemo.activity.location.MyLocationActivity;
 import com.ostep.operation.ui.account.InitAccountActivity;
 import com.ostep.operation.ui.delivery.CustomTabActivity;
 import com.step.operation.common.CommonConstants;
@@ -52,6 +55,9 @@ public class LoginActivity extends AppCompatActivity {
         StrictMode.ThreadPolicy policy=new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
         super.onCreate(savedInstanceState);
+        //add
+        SDKInitializer.initialize(getApplicationContext());//在Application的onCreate()不行，必须在activity的onCreate()中
+        //add
         setContentView(R.layout.activity_login);
         loginViewModel = ViewModelProviders.of(this, new LoginViewModelFactory())
                 .get(LoginViewModel.class);
@@ -176,12 +182,21 @@ public class LoginActivity extends AppCompatActivity {
         Toast.makeText( LoginActivity.this,s, Toast.LENGTH_LONG).show();
         Log.e("sdfs","1111111111111111111111111111111111111111");
 
+        Intent intent = new Intent(LoginActivity.this, MyLocationActivity.class);
+        startActivity(intent);
+
+        Log.e("sdfs","22222222222222222222222222222222222222222");
+    }
+    public void open(View v){
+        String s = "open";
+        Toast.makeText( LoginActivity.this,s, Toast.LENGTH_LONG).show();
+        Log.e("sdfs","1111111111111111111111111111111111111111");
+//直接进DemoMainActivity，不然Lite进不去
         Intent intent = new Intent(LoginActivity.this, DemoMainActivity.class);
         startActivity(intent);
 
         Log.e("sdfs","22222222222222222222222222222222222222222");
     }
-
     //add
 
     private boolean checkSetPwd(String username) {
