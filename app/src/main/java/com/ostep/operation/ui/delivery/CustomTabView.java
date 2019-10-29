@@ -7,6 +7,7 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -60,7 +61,7 @@ public class CustomTabView extends LinearLayout implements View.OnClickListener{
         setGravity(Gravity.CENTER);
         mTabViews = new ArrayList<>();
         mTabs = new ArrayList<>();
-
+        //Button startDeliver = (Button) findViewById(R.id.startDeliver);
     }
 
     /**

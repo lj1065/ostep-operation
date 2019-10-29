@@ -7,76 +7,366 @@
 
     tools:context=".baidu.navi.sdkdemo.activity.location.MyLocationActivity"
     >
+
     <com.baidu.mapapi.map.MapView
         android:id="@+id/bmapView"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="0dp"
         android:clickable="true"
-        android:focusable="true"/>
+        android:focusable="true">
+
+    </com.baidu.mapapi.map.MapView>
+<!--    <LinearLayout-->
+<!--        android:layout_width="40dp"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_alignParentLeft="true"-->
+<!--        android:layout_alignParentBottom="true"-->
+<!--        android:layout_marginLeft="10dp"-->
+<!--        android:layout_marginBottom="120dp"-->
+<!--        android:background="#FFF"-->
+<!--        android:orientation="vertical"-->
+<!--        android:paddingLeft="5dp"-->
+<!--        android:paddingRight="5dp"-->
+<!--        tools:visibility="gone">-->
+
+<!--        <ImageView-->
+<!--            android:id="@+id/add_scale"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_gravity="center_horizontal"-->
+<!--            android:paddingLeft="8dp"-->
+<!--            android:paddingTop="12dp"-->
+<!--            android:paddingRight="8dp"-->
+<!--            android:paddingBottom="12dp"-->
+<!--            android:src="@drawable/ic_track_explore_zoomin_focus" />-->
+
+<!--        <View-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="0.1dp"-->
+<!--            android:background="#22000000" />-->
+
+<!--        <ImageView-->
+<!--            android:id="@+id/low_scale"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_gravity="center_horizontal"-->
+<!--            android:paddingLeft="8dp"-->
+<!--            android:paddingTop="12dp"-->
+<!--            android:paddingRight="8dp"-->
+<!--            android:paddingBottom="12dp"-->
+<!--            android:src="@drawable/ic_track_explore_zoomout_dis" />-->
+<!--    </LinearLayout>-->
+
+    <ImageView
+        android:id="@+id/my_location"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginBottom="60dp"
+        android:layout_marginLeft="10dp"
+        android:background="#FFF"
+        android:padding="10dp"
+        android:src="@drawable/main_icon_location" />
 
     <LinearLayout
-        android:id="@+id/ll"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="100dp"
+        android:orientation="vertical" >
+
+        <ImageView
+            android:id="@+id/road_condition"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/add_poi_map_selection_btn_pressed"
+            android:scaleType="centerInside"
+            android:src="@drawable/main_icon_roadcondition_off" />
+
+        <ImageView
+            android:id="@+id/map_type"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/add_poi_map_selection_btn_pressed"
+            android:scaleType="centerInside"
+            android:src="@drawable/main_icon_maplayers" />
+
+<!--        <ImageView-->
+<!--            android:id="@+id/map_panorama"-->
+<!--            android:layout_width="40dp"-->
+<!--            android:layout_height="40dp"-->
+<!--            android:layout_marginTop="10dp"-->
+<!--            android:background="@drawable/add_poi_map_selection_btn_pressed"-->
+<!--            android:scaleType="centerInside"-->
+<!--            android:src="@drawable/main_map_icon_streetscape_selected" />-->
+
+<!--        <ImageView-->
+<!--            android:id="@+id/map_gotogether"-->
+<!--            android:layout_width="40dp"-->
+<!--            android:layout_height="40dp"-->
+<!--            android:layout_marginTop="10dp"-->
+<!--            android:background="@drawable/add_poi_map_selection_btn_pressed"-->
+<!--            android:scaleType="centerInside"-->
+<!--            android:src="@drawable/map_main_icon_location_share" />-->
+
+<!--        <ImageView-->
+<!--            android:id="@+id/map_location"-->
+<!--            android:layout_width="40dp"-->
+<!--            android:layout_height="40dp"-->
+<!--            android:layout_marginTop="10dp"-->
+<!--            android:background="@drawable/add_poi_map_selection_btn_pressed"-->
+<!--            android:scaleType="centerInside"-->
+<!--            android:src="@drawable/track_collect_running" />-->
+
+        <ImageView
+            android:id="@+id/map_marker"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/add_poi_map_selection_btn_pressed"
+            android:scaleType="centerInside"
+            android:src="@drawable/icon_select_point" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/mylocation_text"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_alignParentBottom="true"
+        android:background="#FFF"
+        android:drawableLeft="@drawable/mylocation"
+        android:drawablePadding="10dp"
+        android:gravity="center_vertical"
+        android:text="我的位置:北京中关村208号" />
+
+<!--    <RelativeLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:padding="5dp"-->
+<!--        tools:visibility="gone">-->
+
+<!--        <EditText-->
+<!--            android:id="@+id/search_panorama"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="50dp"-->
+<!--            android:layout_marginTop="10dp"-->
+<!--            android:background="@drawable/edit_bg"-->
+<!--            android:drawableLeft="@drawable/icon_home_user_no_login"-->
+<!--            android:drawablePadding="10dp"-->
+<!--            android:hint="搜地点、查公交、找路线"-->
+<!--            android:padding="10dp"-->
+<!--            android:textColor="#bbcccccc"-->
+<!--            android:textColorHint="#aacccccc"-->
+<!--            android:textSize="16sp" />-->
+
+<!--        <ImageView-->
+<!--            android:id="@+id/ok_to_search"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_alignParentRight="true"-->
+<!--            android:layout_marginTop="25dp"-->
+<!--            android:layout_marginRight="10dp"-->
+<!--            android:clickable="true"-->
+<!--            android:src="@drawable/icon_line_to_blue" />-->
+
+<!--        <View-->
+<!--            android:layout_width="0.1dp"-->
+<!--            android:layout_height="40dp"-->
+<!--            android:layout_centerVertical="true"-->
+<!--            android:layout_marginRight="10dp"-->
+<!--            android:layout_toLeftOf="@+id/ok_to_search"-->
+<!--            android:background="#22000000"-->
+<!--            android:padding="5dp" />-->
+<!--    </RelativeLayout>-->
+
+    <ImageButton
+        android:id="@+id/start_go"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/mylocation_text"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginStart="5dp"
+        android:layout_marginLeft="325dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="100dp"
+        android:background="#00123456"
+        android:src="@drawable/start_go_bg" />
+
+    <LinearLayout
+        android:id="@+id/mark_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:orientation="horizontal">
+        android:background="#cc4e5a6b"
+        android:clickable="true"
+        android:orientation="vertical"
+        android:visibility="gone" >
 
-        <Button
-            android:id="@+id/bt"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="复位" />
+        <ImageView
+            android:id="@+id/mark_image"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="12dp"
+            android:layout_marginRight="12dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/img_border"
+            android:scaleType="fitXY"
+            android:src="@drawable/image2" />
 
-        <Button
-            android:id="@+id/button"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="卫星" />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/bg_map_bottom" >
 
-        <Button
-            android:id="@+id/buttons"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="普通" />
-<!--        <Button-->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="15dp"
+                android:orientation="vertical" >
+
+                <TextView
+                    android:id="@+id/name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="英伦贵族小旅馆"
+                    android:textColor="#FFF"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/distance"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:text="距离209米"
+                    android:textColor="#FFF" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/zan_nums"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="10dp"
+                android:drawableLeft="@drawable/map_zan"
+                android:text="1289"
+                android:textColor="#FFF"
+                android:textSize="16sp" />
+        </RelativeLayout>
+    </LinearLayout>
+
+
+
+
+<!--    -->
+<!--    <LinearLayout-->
+
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="232dp"-->
+<!--        android:layout_below="@+id/bmapView"-->
+<!--        android:layout_marginTop="13dp"-->
+<!--        android:orientation="horizontal">-->
+
+<!--        <ImageView-->
+<!--            android:id="@+id/mark_image"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_weight="1"-->
+<!--            android:src="@mipmap/drag_location" />-->
+
+<!--        <TextView-->
+<!--            android:id="@+id/name"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_weight="1" />-->
+
+<!--        <TextView-->
+<!--            android:id="@+id/zan_nums"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_weight="1" />-->
+
+<!--        <TextView-->
+<!--            android:id="@+id/distance"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_weight="1" />-->
+
+<!--        <ImageView-->
 <!--            android:id="@+id/road_condition"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_weight="1"-->
+<!--            android:src="@mipmap/switch_icon" />-->
+
+<!--    </LinearLayout>-->
+
+<!--    <com.baidu.mapapi.map.MapView-->
+<!--        android:id="@+id/bmapView"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="189dp"-->
+<!--        android:layout_marginTop="0dp"-->
+<!--        android:clickable="true"-->
+<!--        android:focusable="true">-->
+
+<!--    </com.baidu.mapapi.map.MapView>-->
+
+<!--    <LinearLayout-->
+<!--        android:id="@+id/ll"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_alignParentBottom="true"-->
+<!--        android:orientation="horizontal">-->
+
+<!--        <Button-->
+<!--            android:id="@+id/bt"-->
 <!--            android:layout_width="0dp"-->
 <!--            android:layout_height="wrap_content"-->
 <!--            android:layout_weight="1"-->
-<!--            android:text="交通" />-->
-        <Button
-            android:id="@+id/my_location"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="定位" />
-        <Button
-            android:id="@+id/map_location"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="模式" />
+<!--            android:text="复位" />-->
+
+<!--        <Button-->
+<!--            android:id="@+id/button"-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_weight="1"-->
+<!--            android:text="卫星" />-->
+
+<!--        <Button-->
+<!--            android:id="@+id/buttons"-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_weight="1"-->
+<!--            android:text="普通" />-->
+<!--        &lt;!&ndash;        <Button&ndash;&gt;-->
+<!--        &lt;!&ndash;            android:id="@+id/road_condition"&ndash;&gt;-->
+<!--        &lt;!&ndash;            android:layout_width="0dp"&ndash;&gt;-->
+<!--        &lt;!&ndash;            android:layout_height="wrap_content"&ndash;&gt;-->
+<!--        &lt;!&ndash;            android:layout_weight="1"&ndash;&gt;-->
+<!--        &lt;!&ndash;            android:text="交通" />&ndash;&gt;-->
+<!--        <Button-->
+<!--            android:id="@+id/my_location"-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_weight="1"-->
+<!--            android:text="定位" />-->
+
+<!--        <Button-->
+<!--            android:id="@+id/map_location"-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_weight="1"-->
+<!--            android:text="模式" />-->
 
 
-    </LinearLayout>
-    <ImageView
-        android:id="@+id/mark_image"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        />
-    <TextView
-        android:id="@+id/name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
-    <TextView
-        android:id="@+id/zan_nums"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
-    <ImageView
-        android:id="@+id/road_condition"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+<!--    </LinearLayout>-->
+
 </RelativeLayout>

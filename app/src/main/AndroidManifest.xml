@@ -130,7 +130,7 @@
             android:enabled="true"
             android:process=":remote">
         </service>
-
+        <activity android:name="com.ostep.operation.ui.delivery.DeliverListActivity"/>
     </application>
 
 </manifest>

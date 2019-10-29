@@ -15,4 +15,6 @@ public class UrlConstants {
     //public static String MY_DELIVERY_TASKS="https://api.ostep.com.cn/ostep/ship/my/tasks?user_id=%s";
 
     public static String MY_DELIVERY_TASKS="https://api.ostep.com.cn/ostep/ship/my/tasks?user_id=%s&d_code=%s";
+
+    public static String DELIVERY_TASKS_INFO="https://api.ostep.com.cn/ostep/ship/my/task/order?task_id=%s";
 }

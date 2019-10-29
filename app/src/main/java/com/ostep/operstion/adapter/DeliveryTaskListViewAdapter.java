@@ -1,12 +1,14 @@
 package com.ostep.operstion.adapter;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.alibaba.fastjson.JSONArray;
@@ -14,6 +16,7 @@ import com.alibaba.fastjson.JSONArray;
 
 import com.R;
 
+import java.lang.reflect.Field;
 import java.util.List;
 import java.util.Map;
 
@@ -21,6 +24,8 @@ public class DeliveryTaskListViewAdapter extends BaseAdapter {
     private List<Map<String, Object>> data;
     private LayoutInflater layoutInflater;
     private Context context;
+    private TextView childView1;
+
     public DeliveryTaskListViewAdapter(Context context,List<Map<String, Object>> data){
         this.context=context;
         this.data=data;
@@ -34,8 +39,8 @@ public class DeliveryTaskListViewAdapter extends BaseAdapter {
         public ImageView image;
         public TextView desc;
         public TextView status;
-        public Button startDeliver;
-
+        public Button Deliver;
+        public LinearLayout line;
     }
     @Override
     public int getCount() {
@@ -67,7 +72,8 @@ public class DeliveryTaskListViewAdapter extends BaseAdapter {
             zujian.image=(ImageView)convertView.findViewById(R.id.image);
             zujian.desc=(TextView)convertView.findViewById(R.id.desc);
             zujian.status=(TextView)convertView.findViewById(R.id.status);
-            zujian.startDeliver=(Button)convertView. findViewById(R.id.startDeliver);
+            zujian.Deliver=(Button)convertView. findViewById(R.id.Deliver);
+            zujian.line=(LinearLayout)convertView. findViewById(R.id.line);
             convertView.setTag(zujian);
         }else{
             zujian=(TaskVew)convertView.getTag();
@@ -81,6 +87,10 @@ public class DeliveryTaskListViewAdapter extends BaseAdapter {
             zujian.image.setBackgroundResource(R.drawable.tab_discovery_selector);
         }
         JSONArray orderNos = (JSONArray)data.get(position).get("ship_order_nos");
+        //add
+//        assert orderNos != null;
+//        Log.e("orderNos",orderNos.toString());
+        //add
         if (orderNos!=null){
             zujian.desc.setText(orderNos.size()+"单");
         }else {
@@ -92,19 +102,70 @@ public class DeliveryTaskListViewAdapter extends BaseAdapter {
         if (statusInt!=null){
             if (statusInt==0){
                 status ="未确认";
+                //add
+                JSONArray shipOrders = (JSONArray)data.get(position).get("ship_order_nos");
+                Log.e("orderNos1",orderNos.toString());
+                String s = shipOrders +"";
+                zujian.Deliver.setContentDescription(s);
+//                zujian.line.
+
+//                childView1 = (TextView) LayoutInflater.from(DeliveryTaskListViewAdapter.this).inflate( R.layout.listview_delivery_task,null, false);
+//                Button BT;
+//                BT = new Button(this);
+//                childView1 = (TextView)  layoutInflater.inflate(R.layout.listview_delivery_task, null);
+//                childView1.setText("详细");
+//                childView1.setId(position);
+//
+//                zujian.line.addView(childView1);
+
             }else if (statusInt==1){
                 status ="已确认";
+                //add
+                JSONArray shipOrders = (JSONArray)data.get(position).get("ship_order_nos");
+                Log.e("orderNos1",orderNos.toString());
+                String s = shipOrders +"";
+                zujian.Deliver.setContentDescription(s);
             }else if (statusInt==2){
                 status ="拒绝";
+                //add
+                JSONArray shipOrders = (JSONArray)data.get(position).get("ship_order_nos");
+                Log.e("orderNos1",orderNos.toString());
+                String s = shipOrders +"";
+                zujian.Deliver.setContentDescription(s);
             }else if (statusInt==3){
                 status ="配送中";
+                //add
+                JSONArray shipOrders = (JSONArray)data.get(position).get("ship_order_nos");
+                Log.e("orderNos1",orderNos.toString());
+                String s = shipOrders +"";
+                zujian.Deliver.setContentDescription(s);
             }else if (statusInt==4){
                 status ="配送完成";
+                //add
+                JSONArray shipOrders = (JSONArray)data.get(position).get("ship_order_nos");
+                Log.e("orderNos1",orderNos.toString());
+                String s = shipOrders +"";
+                zujian.Deliver.setContentDescription(s);
             }else {
                 status ="未知";
+                //add
+                JSONArray shipOrders = (JSONArray)data.get(position).get("ship_order_nos");
+                Log.e("orderNos1",orderNos.toString());
+                String s = shipOrders +"";
+                zujian.Deliver.setContentDescription(s);
             }
         }
         zujian.status.setText(status);
         return convertView;
     }
+
+//    public static int getResId(String variableName, Class<?> c) {
+//        try {
+//            Field idField = c.getDeclaredField(variableName);
+//            return idField.getInt(idField);
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//            return 1;
+//        }
+//    }
 }

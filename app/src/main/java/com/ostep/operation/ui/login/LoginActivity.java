@@ -66,10 +66,17 @@ public class LoginActivity extends AppCompatActivity {
         final EditText passwordEditText = findViewById(R.id.password);
         final Button loginButton = findViewById(R.id.activity_login);
         final ProgressBar loadingProgressBar = findViewById(R.id.loading);
+//add
+//        String userInfo = "{\"userId\":23,\"token\":\"eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxODUxOTIzMzY4MiIsImF1dGgiOlt7ImF1dGhvcml0eSI6IkFkbWluIn1dLCJpYXQiOjE1NzIyNjY2ODAsImV4cCI6MTU3NDg1ODY4MH0.bBz5M6ew0N3lqZeJAYy7EEc_Dum8UJOlcDR6M9q0wXQ\",\"role\":10,\"d_code\":\"bazhong_001\",\"opUserPhone\":\"18519233682\"}";
+////        {"userId":23,"token":"eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxODUxOTIzMzY4MiIsImF1dGgiOlt7ImF1dGhvcml0eSI6IkFkbWluIn1dLCJpYXQiOjE1NzIzNTQ4MzIsImV4cCI6MTU3NDk0NjgzMn0.vBziQsVnHzXFUUYi_W4Fw9lrqr_4NDzDzd9RDSIiREs","role":10,"d_code":"bazhong_001","opUserPhone":"18519233682"}
+//
+//        Intent intent = new Intent(LoginActivity.this, CustomTabActivity.class);
+//        intent.putExtra(CommonConstants.USER_INFO,userInfo);
+//        startActivity(intent);
 
-
-
-        loginViewModel.getLoginFormState().observe(this, new Observer<LoginFormState>() {
+     //add
+        //
+            loginViewModel.getLoginFormState().observe(this, new Observer<LoginFormState>() {
             @Override
             public void onChanged(@Nullable LoginFormState loginFormState) {
                 if (loginFormState == null) {
@@ -159,6 +166,7 @@ public class LoginActivity extends AppCompatActivity {
                             passwordEditText.getText().toString());
                     if (userInfo!=null){
                         //TODO 存储token，跳转到任务也没
+                        Log.e("userInfo",userInfo);
                         Toast.makeText(LoginActivity.this, "登录成功 ",Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(LoginActivity.this, CustomTabActivity.class);
                         intent.putExtra(CommonConstants.USER_INFO,userInfo);

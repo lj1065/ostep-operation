@@ -5,6 +5,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ListView;
 
 import androidx.annotation.Nullable;
@@ -34,6 +35,7 @@ public class TodayDeliveryFragment extends Fragment {
 
     private ListView listView;
     private String mFrom;
+//    private Button startDeliver;
     public static TodayDeliveryFragment newInstance(String from){
         TodayDeliveryFragment fragment = new TodayDeliveryFragment();
         Bundle bundle = new Bundle();
@@ -48,6 +50,7 @@ public class TodayDeliveryFragment extends Fragment {
         if(getArguments()!=null){
             mFrom = getArguments().getString("from");
         }
+
     }
 
 //    @Nullable
@@ -82,6 +85,7 @@ public class TodayDeliveryFragment extends Fragment {
             Log.d("TodayDeliveryFragment", " task list: "+resBody);
             WebResponseBody webResponseBody = JSONObject.parseObject(resBody,WebResponseBody.class);
             if (webResponseBody.getResult_code()==200){
+                Log.e("TodayDelivery", String.valueOf((List<Map<String, Object>>)webResponseBody.getData()));
                 return (List<Map<String, Object>>)webResponseBody.getData();
             }else {
                 return null;

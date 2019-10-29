@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -13,6 +15,8 @@ import com.alibaba.fastjson.JSON;
 //import com.ostep.operation.R;
 import com.R;
 
+import com.baidu.navi.sdkdemo.activity.location.MyLocationActivity;
+import com.ostep.operation.ui.login.LoginActivity;
 import com.step.operation.common.CommonConstants;
 import com.step.operation.common.DataGenerator;
 import com.step.operation.common.UserInfo;
@@ -25,6 +29,7 @@ public class CustomTabActivity extends AppCompatActivity implements CustomTabVie
     private CustomTabView mCustomTabView;
     private Fragment[]mFragmensts;
     public static UserInfo userInfo;
+    private Button Deliver;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,8 +40,25 @@ public class CustomTabActivity extends AppCompatActivity implements CustomTabVie
         mFragmensts = DataGenerator.getFragments("CustomTabView Tab");
         initView();
 
-    }
+        Deliver = (Button) findViewById(R.id.Deliver);
+        //Intent
 
+    }
+    //add
+    public void Deliver(View v )
+    {
+        Button button = (Button) v;
+
+
+        String str = "aaa" + v.getContentDescription();
+        Toast.makeText(this, str, Toast.LENGTH_SHORT).show();
+
+        Intent intent = new Intent(CustomTabActivity.this, DeliverListActivity.class);
+        intent.putExtra("task_id",v.getContentDescription());
+        startActivity(intent);
+
+    }
+    //add
     private void initView() {
         mCustomTabView = (CustomTabView) findViewById(R.id.custom_tab_container);
         CustomTabView.Tab tabDis = new CustomTabView.Tab().setText("今日")
