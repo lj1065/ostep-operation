@@ -246,7 +246,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
                     android:text="距离209米"
-                    android:textColor="#FFF" />
+                    android:textColor="#fff" />
             </LinearLayout>
 
             <TextView
@@ -259,7 +259,9 @@
                 android:drawableLeft="@drawable/map_zan"
                 android:text="1289"
                 android:textColor="#FFF"
-                android:textSize="16sp" />
+                android:textSize="16sp"
+                android:visibility="gone"
+                />
         </RelativeLayout>
     </LinearLayout>
 

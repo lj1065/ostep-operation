@@ -51,7 +51,7 @@ public class CustomTabActivity extends AppCompatActivity implements CustomTabVie
 
 
         String str = "aaa" + v.getContentDescription();
-        Toast.makeText(this, str, Toast.LENGTH_SHORT).show();
+//        Toast.makeText(this, str, Toast.LENGTH_SHORT).show();
 
         Intent intent = new Intent(CustomTabActivity.this, DeliverListActivity.class);
         intent.putExtra("task_id",v.getContentDescription());

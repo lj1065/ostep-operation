@@ -43,6 +43,7 @@ public class DeliverListActivity extends AppCompatActivity {
     private String task_id_num;
     private List<Map<String, Object>> data;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,10 +54,7 @@ public class DeliverListActivity extends AppCompatActivity {
         //获取Intent中的数据
 //        LightInfo = intent.getStringExtra("LightInfo" );//int
         task_id_num = intent.getStringExtra("task_id" );//int
-        task_id_num = task_id_num.replace("\"", "");
-        task_id_num = task_id_num.replace("[", "");
-        task_id_num = task_id_num.replace("]", "");
-        Toast.makeText(this, task_id_num, Toast.LENGTH_SHORT).show();
+//        Toast.makeText(this, task_id_num, Toast.LENGTH_SHORT).show();
 //        getSubmit();
           new SentInfoTask().execute(task_id_num);
 
@@ -174,18 +172,27 @@ public class DeliverListActivity extends AppCompatActivity {
                 super.onPostExecute(o);
                 //           String s= (String) o;
                 data = (List<Map<String, Object>>)o;
+                if(data.isEmpty())
+                {
+                    String s = "无订单信息！";
+                    Toast.makeText(DeliverListActivity.this,s, Toast.LENGTH_SHORT).show();
+                }else {
+                    Log.e("ship_no",data.get(0).get("ship_no").toString());
+                    for (int s = 0; s < data.size();s++ ) {
 
-                Log.e("ship_no",data.get(0).get("ship_no").toString());
-//            JSONArray orderNos = (JSONArray)data.get(0).get("dest_position");
-//            Log.e("orderNos",s);
-            for (int s = 0; s < data.size();s++ ) {
+                        task_id.setText(data.get(s).get("ship_no").toString());
+                        dest_position.setText(data.get(s).get("dest_position").toString());
+                        dest_address.setText(data.get(s).get("dest_address").toString());
 
-                task_id.setText(data.get(s).get("ship_no").toString());
-                dest_position.setText(data.get(s).get("dest_position").toString());
-                dest_address.setText(data.get(s).get("dest_address").toString());
+
 //                JSONArray orderNos = (JSONArray) data.get(s).get("ship_order_nos");
 //                Log.e("DELIVERY_TASKS_INFO",orderNos+"");
-            }
+                    }
+                }
+
+//            JSONArray orderNos = (JSONArray)data.get(0).get("dest_position");
+//            Log.e("orderNos",s);
+
 //            String s= (String) o;
 //            //打印参数
 //            Log.e("Toast","Toast");
@@ -229,7 +236,18 @@ public class DeliverListActivity extends AppCompatActivity {
          SDKInitializer.initialize(getApplicationContext());//在Application的onCreate()不行，必须在activity的onCreate()中
          //add
          Intent intent = new Intent(DeliverListActivity.this, MyLocationActivity.class);
-//         intent.putExtra("location",dest_position.getText().toString());
+         String sent_location = dest_position.getText().toString();
+
+//         String sent_phone = dest_phone.getText().toString();
+//         String sent_receiver = dest_receiver.getText().toString();
+         String sent_phone = "18519233682";
+         String sent_receiver = "颜强";
+
+         intent.putExtra("sent_location",sent_location);
+         intent.putExtra("phone",sent_phone);
+         intent.putExtra("receiver",sent_receiver);
+//         intent.getStringExtra();
+         Log.e("sent_location",sent_location);
          startActivity(intent);
 
      }
