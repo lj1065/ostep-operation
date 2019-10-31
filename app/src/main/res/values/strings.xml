@@ -26,8 +26,9 @@
     <string name="title_activity_delivery_tab">DeliveryTabActivity</string>
     <string name="tabhost">tabhost</string>
     <string name="tabcontent">tabcontent</string>
-
-<!--    add-->
+    <string name="lost_password">找回密码</string>
+    <string name="bt_ok">确认</string>
+    <!--    add-->
 
 
 </resources>

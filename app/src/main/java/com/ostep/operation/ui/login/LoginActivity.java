@@ -59,6 +59,7 @@ public class LoginActivity extends AppCompatActivity {
         SDKInitializer.initialize(getApplicationContext());//在Application的onCreate()不行，必须在activity的onCreate()中
         //add
         setContentView(R.layout.activity_login);
+
         loginViewModel = ViewModelProviders.of(this, new LoginViewModelFactory())
                 .get(LoginViewModel.class);
 
@@ -185,25 +186,32 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     //add
-    public void open1(View v){
-        String s = "open";
-        Toast.makeText( LoginActivity.this,s, Toast.LENGTH_LONG).show();
-        Log.e("sdfs","1111111111111111111111111111111111111111");
+//    public void open1(View v){
+//        String s = "open";
+//        Toast.makeText( LoginActivity.this,s, Toast.LENGTH_LONG).show();
+////        Log.e("sdfs","1111111111111111111111111111111111111111");
+//
+//        Intent intent = new Intent(LoginActivity.this, MyLocationActivity.class);
+//        startActivity(intent);
+//
+////        Log.e("sdfs","22222222222222222222222222222222222222222");
+//    }
+//    public void open(View v){
+//        String s = "open";
+//        Toast.makeText( LoginActivity.this,s, Toast.LENGTH_LONG).show();
+////        Log.e("sdfs","1111111111111111111111111111111111111111");
+//
+//        //直接进DemoMainActivity，不然Lite进不去
+//        Intent intent = new Intent(LoginActivity.this, DemoMainActivity.class);
+//        startActivity(intent);
+//
+////        Log.e("sdfs","22222222222222222222222222222222222222222");
+//    }
 
-        Intent intent = new Intent(LoginActivity.this, MyLocationActivity.class);
-        startActivity(intent);
-
-        Log.e("sdfs","22222222222222222222222222222222222222222");
-    }
-    public void open(View v){
-        String s = "open";
-        Toast.makeText( LoginActivity.this,s, Toast.LENGTH_LONG).show();
-        Log.e("sdfs","1111111111111111111111111111111111111111");
-//直接进DemoMainActivity，不然Lite进不去
-        Intent intent = new Intent(LoginActivity.this, DemoMainActivity.class);
-        startActivity(intent);
-
-        Log.e("sdfs","22222222222222222222222222222222222222222");
+        public void lostPwd(View v){
+            Log.d("LoginActivity", "找回密码，跳转到设置密码页 ");
+            Intent intent = new Intent(LoginActivity.this, InitAccountActivity.class);
+            startActivity(intent);
     }
     //add
 

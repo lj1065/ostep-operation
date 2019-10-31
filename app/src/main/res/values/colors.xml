@@ -18,4 +18,12 @@
 
     <color name="page3_start_color">#75539F</color>
     <color name="page3_end_color">#A87CB7</color>
+
+    <color name="color_dd343333">#dd343333</color>
+    <color name="color_343333">#343333</color>
+
+    <color name="color_52ADE7">#52ADE7</color>
+    <color name="color_A3D1EE">#A3D1EE</color>
+
+    <color name="color_textcolor">#FFFFFF</color>
 </resources>

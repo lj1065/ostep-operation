@@ -10,6 +10,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.R;
+import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.baidu.mapapi.SDKInitializer;
@@ -141,7 +142,7 @@ public class DeliverListActivity extends AppCompatActivity {
              protected Object doInBackground(Object[] objects) {
                 String task_id_num=objects[0].toString();      //请求路径
 //
-                task_id_num = "shiptask2019102022381750";
+//                task_id_num = "shiptask2019102022381750";
                 String fullGetMyTaskUrl = String.format(UrlConstants.DELIVERY_TASKS_INFO,task_id_num);
 //                Log.e("fullGetMyTaskUrl",fullGetMyTaskUrl);
 //                return null;
@@ -174,8 +175,9 @@ public class DeliverListActivity extends AppCompatActivity {
                 data = (List<Map<String, Object>>)o;
                 if(data.isEmpty())
                 {
-                    String s = "无订单信息！";
-                    Toast.makeText(DeliverListActivity.this,s, Toast.LENGTH_SHORT).show();
+                    String s2 = "无订单信息！";
+//                    task_id.setText(data.get(0).get("ship_no").toString());
+                    Toast.makeText(DeliverListActivity.this,s2, Toast.LENGTH_SHORT).show();
                 }else {
                     Log.e("ship_no",data.get(0).get("ship_no").toString());
                     for (int s = 0; s < data.size();s++ ) {
@@ -238,14 +240,22 @@ public class DeliverListActivity extends AppCompatActivity {
          Intent intent = new Intent(DeliverListActivity.this, MyLocationActivity.class);
          String sent_location = dest_position.getText().toString();
 
-//         String sent_phone = dest_phone.getText().toString();
+         String dest_address_String = dest_address.getText().toString();
 //         String sent_receiver = dest_receiver.getText().toString();
-         String sent_phone = "18519233682";
-         String sent_receiver = "颜强";
+
+
+         JSONObject jsonObject= JSON.parseObject(dest_address_String);
+         String address_String = jsonObject.getString("address");
+         String phone_String = jsonObject.getString("phone");
+         String receiver_String = jsonObject.getString("receiver");
+
+         String user_info_string =  address_String + "+" + phone_String + "+" +receiver_String;
+//         String sent_phone = "18519233682";
+//         String sent_receiver = "颜强";
 
          intent.putExtra("sent_location",sent_location);
-         intent.putExtra("phone",sent_phone);
-         intent.putExtra("receiver",sent_receiver);
+         intent.putExtra("user_info",user_info_string);
+
 //         intent.getStringExtra();
          Log.e("sent_location",sent_location);
          startActivity(intent);

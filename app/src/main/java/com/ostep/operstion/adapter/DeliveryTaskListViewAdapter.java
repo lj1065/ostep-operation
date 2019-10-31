@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -42,6 +43,7 @@ public class DeliveryTaskListViewAdapter extends BaseAdapter {
         public TextView status;
         public Button Deliver;
         public LinearLayout line;
+        public CheckBox box;
     }
     @Override
     public int getCount() {
@@ -76,6 +78,7 @@ public class DeliveryTaskListViewAdapter extends BaseAdapter {
             zujian.status=(TextView)convertView.findViewById(R.id.status);
             zujian.Deliver=(Button)convertView. findViewById(R.id.Deliver);
             zujian.line=(LinearLayout)convertView. findViewById(R.id.line);
+            zujian.box=(CheckBox)convertView. findViewById(R.id.box);
             convertView.setTag(zujian);
         }else{
             zujian=(TaskVew)convertView.getTag();
@@ -105,14 +108,15 @@ public class DeliveryTaskListViewAdapter extends BaseAdapter {
             if (statusInt==0){
                 status ="未确认";
                 //add
-                JSONArray shipOrders = (JSONArray)data.get(position).get("ship_order_nos");
-                Log.e("orderNos1",orderNos.toString());
+                String shipOrders = (String)data.get(position).get("task_id");
+//                Log.e("orderNos1",orderNos.toString());
                 String s = shipOrders +"";
-                s = s.replace("\"", "");
-                s = s.replace("[", "");
-                s = s.replace("]", "");
+//                s = s.replace("\"", "");
+//                s = s.replace("[", "");
+//                s = s.replace("]", "");
                 zujian.Deliver.setContentDescription(s);
                 zujian.task_id.setText(s);
+                zujian.box.setContentDescription(s);
 //                zujian.line.
 
 //                childView1 = (TextView) LayoutInflater.from(DeliveryTaskListViewAdapter.this).inflate( R.layout.listview_delivery_task,null, false);
@@ -127,58 +131,63 @@ public class DeliveryTaskListViewAdapter extends BaseAdapter {
             }else if (statusInt==1){
                 status ="已确认";
                 //add
-                JSONArray shipOrders = (JSONArray)data.get(position).get("ship_order_nos");
-                Log.e("orderNos1",orderNos.toString());
+                String shipOrders = (String)data.get(position).get("task_id");
+//                Log.e("orderNos1",orderNos.toString());
                 String s = shipOrders +"";
-                s = s.replace("\"", "");
-                s = s.replace("[", "");
-                s = s.replace("]", "");
+//                s = s.replace("\"", "");
+//                s = s.replace("[", "");
+//                s = s.replace("]", "");
                 zujian.Deliver.setContentDescription(s);
                 zujian.task_id.setText(s);
+                zujian.box.setContentDescription(s);
             }else if (statusInt==2){
                 status ="拒绝";
                 //add
-                JSONArray shipOrders = (JSONArray)data.get(position).get("ship_order_nos");
-                Log.e("orderNos1",orderNos.toString());
+                String shipOrders = (String)data.get(position).get("task_id");
+//                Log.e("orderNos1",orderNos.toString());
                 String s = shipOrders +"";
-                s = s.replace("\"", "");
-                s = s.replace("[", "");
-                s = s.replace("]", "");
+//                s = s.replace("\"", "");
+//                s = s.replace("[", "");
+//                s = s.replace("]", "");
                 zujian.Deliver.setContentDescription(s);
                 zujian.task_id.setText(s);
+                zujian.box.setContentDescription(s);
             }else if (statusInt==3){
                 status ="配送中";
                 //add
-                JSONArray shipOrders = (JSONArray)data.get(position).get("ship_order_nos");
-                Log.e("orderNos1",orderNos.toString());
+                String shipOrders = (String)data.get(position).get("task_id");
+//                Log.e("orderNos1",orderNos.toString());
                 String s = shipOrders +"";
-                s = s.replace("\"", "");
-                s = s.replace("[", "");
-                s = s.replace("]", "");
+//                s = s.replace("\"", "");
+//                s = s.replace("[", "");
+//                s = s.replace("]", "");
                 zujian.Deliver.setContentDescription(s);
                 zujian.task_id.setText(s);
+                zujian.box.setContentDescription(s);
             }else if (statusInt==4){
                 status ="配送完成";
                 //add
-                JSONArray shipOrders = (JSONArray)data.get(position).get("ship_order_nos");
-                Log.e("orderNos1",orderNos.toString());
+                String shipOrders = (String)data.get(position).get("task_id");
+//                Log.e("orderNos1",orderNos.toString());
                 String s = shipOrders +"";
-                s = s.replace("\"", "");
-                s = s.replace("[", "");
-                s = s.replace("]", "");
+//                s = s.replace("\"", "");
+//                s = s.replace("[", "");
+//                s = s.replace("]", "");
                 zujian.Deliver.setContentDescription(s);
                 zujian.task_id.setText(s);
+                zujian.box.setContentDescription(s);
             }else {
                 status ="未知";
                 //add
-                JSONArray shipOrders = (JSONArray)data.get(position).get("ship_order_nos");
-                Log.e("orderNos1",orderNos.toString());
+                String shipOrders = (String)data.get(position).get("task_id");
+//                Log.e("orderNos1",orderNos.toString());
                 String s = shipOrders +"";
-                s = s.replace("\"", "");
-                s = s.replace("[", "");
-                s = s.replace("]", "");
+//                s = s.replace("\"", "");
+//                s = s.replace("[", "");
+//                s = s.replace("]", "");
                 zujian.Deliver.setContentDescription(s);
                 zujian.task_id.setText(s);
+                zujian.box.setContentDescription(s);
             }
         }
         zujian.status.setText(status);

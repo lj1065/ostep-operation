@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:orientation="vertical"
-              android:background="@android:color/white"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent"
-    >
-     <TextView
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="@android:color/white"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
          android:id="@+id/title_from"
          android:layout_width="wrap_content"
          android:layout_height="wrap_content"
@@ -18,16 +19,89 @@
          android:id="@+id/fragment_content"
          android:layout_width="wrap_content"
          android:layout_height="wrap_content"
-         android:text="HomeFragment1"
+         android:text=""
          android:textColor="@android:color/black"
          android:textSize="20sp"
          android:layout_centerInParent="true"
          />
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:text="已选任务"
+        android:textColor="@android:color/black"
+        android:textSize="14sp" />
+    <TextView
+        android:id="@+id/box_num"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0"
+        android:textColor="@android:color/holo_red_dark"
+        android:textSize="20sp"
+        android:layout_marginLeft="110dp"
+        />
+
+    <ProgressBar
+        android:id="@+id/loading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="64dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="64dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/password"
+        app:layout_constraintStart_toStartOf="@+id/password"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.3" />
+
+    <TextView
+        android:id="@+id/task_ids"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:visibility="visible"
+        />
+    <TextView
+    android:id="@+id/ship_no_string"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text=""
+    android:visibility="visible"
+    /><TextView
+    android:id="@+id/dest_position_string"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text=""
+    android:visibility="visible"
+    /><TextView
+    android:id="@+id/user_info_string"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text=""
+    android:visibility="visible"
+    />
+
+    <Button
+        android:id="@+id/Deliver_bt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="开始配送"
+        android:onClick="goToDeliver"
+        android:layout_marginLeft="300dp"
+        />
+<!--    android:layout_centerInParent="true"-->
+
      <ListView
          android:id="@+id/listview"
-         android:layout_width="fill_parent"
-         android:layout_height="fill_parent">
+         android:layout_marginTop="50dp"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+        >
+<!--          android:dividerHeight="5dp"-->
      </ListView>
 
 </RelativeLayout>

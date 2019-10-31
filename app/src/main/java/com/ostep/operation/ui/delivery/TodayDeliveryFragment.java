@@ -77,7 +77,8 @@ public class TodayDeliveryFragment extends Fragment {
     public List<Map<String, Object>> getData(){
        // String fullGetMyTaskUrl = String.format(UrlConstants.MY_DELIVERY_TASKS,CustomTabActivity.userInfo.getUserId());
         String fullGetMyTaskUrl = String.format(UrlConstants.MY_DELIVERY_TASKS,CustomTabActivity.userInfo.getUserId(),CustomTabActivity.userInfo.getD_code());
-        OkHttpClient client = new OkHttpClient();
+//        String fullGetMyTaskUrl ="https://api.ostep.com.cn/ostep/ship/my/tasks?user_id=23&d_code=bazhong_001";
+                OkHttpClient client = new OkHttpClient();
         Request request = new Request.Builder().url(fullGetMyTaskUrl).build();
         try {
             Response response = client.newCall(request).execute();
