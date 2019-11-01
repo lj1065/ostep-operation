@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -49,6 +50,7 @@ public class CustomTabActivity extends AppCompatActivity implements CustomTabVie
     public int choose_num = 0;
     private List<Map<String, Object>> data;
     private Object address;
+    private String task_info;
 //    public String[] task_ids  = new String[100];
 
     @Override
@@ -65,6 +67,16 @@ public class CustomTabActivity extends AppCompatActivity implements CustomTabVie
         //Intent
 
     }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+//        this.onCreate(null);
+        //重载
+        finish();
+        startActivity(getIntent());
+
+    }
     //add
     public void Deliver(View v )
     {
@@ -79,6 +91,7 @@ public class CustomTabActivity extends AppCompatActivity implements CustomTabVie
     public void ChooseBox(View v)
     {
         CheckBox box = (CheckBox) v;
+        //TASK ID
         String task_id = box.getContentDescription().toString();
         TextView textview = (TextView)  findViewById(R.id.box_num);
         Button Deliver_bt = (Button)  findViewById(R.id.Deliver_bt);
@@ -87,46 +100,55 @@ public class CustomTabActivity extends AppCompatActivity implements CustomTabVie
         TextView task_ids = (TextView)  findViewById(R.id.task_ids);
         String task_ids_string = task_ids.getText().toString();
 
-        if(((CheckBox) v).isChecked())
-        {
-            choose_num = choose_num + 1;
 
-            task_ids_string = task_ids_string + "," + task_id;
-            task_ids.setText(task_ids_string);
+        if (((CheckBox) v).isChecked()) {
 
-            Deliver_bt.setContentDescription(task_ids_string);
+            if(choose_num == 20){
+                String str = "最多支持一次配送20单。";
+                Toast.makeText(this, str, Toast.LENGTH_SHORT).show();
 
-            textview.setText(choose_num + "");
+                box.setChecked(false);
+                box.setSelected(false);
 
-//            Log.e("task_ids.length",task_id[0] + "");
-//            if(task_ids.length >= choose_num)
-//            {
-//                for (int j = 0; j < task_ids.length; j++) {
-//                    if (task_ids[j].isEmpty()) {
-//                        task_ids[j] = task_id;
-//                    }
-//                }
-//            }else
-//            {
-//                for (int i = 0; i < choose_num; i++)
-//                    task_ids[i] = task_id;
-//            }
-        }else{
+            }else {
+                choose_num = choose_num + 1;
+                task_ids_string = task_ids_string + "," + task_id;
+                task_ids.setText(task_ids_string);
+
+                Deliver_bt.setContentDescription(task_ids_string);
+
+                textview.setText(choose_num + "");
+            }
+    //            Log.e("task_ids.length",task_id[0] + "");
+    //            if(task_ids.length >= choose_num)
+    //            {
+    //                for (int j = 0; j < task_ids.length; j++) {
+    //                    if (task_ids[j].isEmpty()) {
+    //                        task_ids[j] = task_id;
+    //                    }
+    //                }
+    //            }else
+    //            {
+    //                for (int i = 0; i < choose_num; i++)
+    //                    task_ids[i] = task_id;
+    //            }
+        } else {
             choose_num = choose_num - 1;
-//            String replace1 = ","+task_id;
-            task_ids_string = task_ids_string.replace( ","+task_id , "");
+    //            String replace1 = ","+task_id;
+            task_ids_string = task_ids_string.replace("," + task_id, "");
 
-            Log.e("task_ids_string",task_ids_string);
+            Log.e("task_ids_string", task_ids_string);
             task_ids.setText(task_ids_string);
 
             Deliver_bt.setContentDescription(task_ids_string);
 
             textview.setText(choose_num + "");
-//            for (int j = 0; j < task_ids.length; j++) {
-//                if (task_ids[j].equals(task_id)) {
-//                    task_ids[j] = null;
-//                }
-//            }
+    //            for (int j = 0; j < task_ids.length; j++) {
+    //                if (task_ids[j].equals(task_id)) {
+    //                    task_ids[j] = null;
+    //                }
+    //            }
+
 
         }
     }
@@ -135,58 +157,67 @@ public class CustomTabActivity extends AppCompatActivity implements CustomTabVie
     public void goToDeliver(View v)
     {
         Button goToDeliverButton = (Button) v;
-        Log.e("goToDeliver","122222222222222222");
-        TextView task_ids = (TextView)  findViewById(R.id.task_ids);
-        String task_ids_string = task_ids.getText().toString();
-        TextView textview = (TextView)  findViewById(R.id.box_num);
-
-        String[] i = task_ids_string.split(",");
-//        Log.e("getdata",i[0] + "--"+i[1]);
-        ProgressBar loading = (ProgressBar)findViewById(R.id.loading);
-
-        for (int k =1;k < choose_num+1;k++)
+        if(choose_num == 0)
         {
-            Log.e("getdata",i[k]);
-            if(i[k].isEmpty())
+            String str = "你还没选择订单。";
+            Toast.makeText(this, str, Toast.LENGTH_SHORT).show();
+        }else
             {
 
-            }else {
+//        Log.e("goToDeliver","122222222222222222");
+                TextView task_ids = (TextView)  findViewById(R.id.task_ids);
+                String task_ids_string = task_ids.getText().toString();
+                TextView textview = (TextView)  findViewById(R.id.box_num);
+
+                String[] i = task_ids_string.split(",");
+//        Log.e("getdata",i[0] + "--"+i[1]);
+                ProgressBar loading = (ProgressBar)findViewById(R.id.loading);
+
+                for (int k =1;k < choose_num+1;k++)
+                {
+                    Log.e("getdata",i[k]);
+                    if(i[k].isEmpty())
+                    {
+
+                    }else {
 //                new SentInfoTask().execute(i[k]);
-                loading.setVisibility(View.VISIBLE);
-                goToDeliverButton.setEnabled(false);
-                   while (getTaskData(i[k])){
-                        int op =1;
-                   }
-                loading.setVisibility(View.GONE);
-                     Log.e("getdata11",i[k]);
-            }
-        }
+                        loading.setVisibility(View.VISIBLE);
+                        goToDeliverButton.setEnabled(false);
+                        while (getTaskData(i[k])){
+                            int op =1;
+                        }
+                        loading.setVisibility(View.GONE);
+                        Log.e("getdata11",i[k]);
+                    }
+                }
 
 
-        //add
-        SDKInitializer.initialize(getApplicationContext());//在Application的onCreate()不行，必须在activity的onCreate()中
-        //add
-        Intent intent = new Intent(CustomTabActivity.this, MyLocationActivity.class);
+                //add
+                SDKInitializer.initialize(getApplicationContext());//在Application的onCreate()不行，必须在activity的onCreate()中
+                //add
+                Intent intent = new Intent(CustomTabActivity.this, MyLocationActivity.class);
 
-        String sent_phone = "18519233682";
-        String sent_receiver = "颜强";
+//        String sent_phone = "18519233682";
+//        String sent_receiver = "颜强";
 
-        TextView ship_no = (TextView)  findViewById(R.id.ship_no_string);;
-        String ship_no_string = ship_no.getText().toString();
+                TextView ship_no = (TextView)  findViewById(R.id.ship_no_string);;
+                String ship_no_string = ship_no.getText().toString();
 
-        TextView dest_position = (TextView)  findViewById(R.id.dest_position_string);;
-        String dest_position_string = dest_position.getText().toString();
+                TextView dest_position = (TextView)  findViewById(R.id.dest_position_string);;
+                String dest_position_string = dest_position.getText().toString();
 
-        TextView user_info = (TextView)  findViewById(R.id.user_info_string);;
-        String user_info_string = user_info.getText().toString();
+                TextView user_info = (TextView)  findViewById(R.id.user_info_string);;
+                String user_info_string = user_info.getText().toString();
 
-        Log.e("dest_position_string",dest_position_string);
+                Log.e("dest_position_string",dest_position_string);
 
-        intent.putExtra("sent_location",dest_position_string);
-        intent.putExtra("user_info",user_info_string);
+                intent.putExtra("sent_location",dest_position_string);
+                intent.putExtra("user_info",user_info_string);
+                intent.putExtra("task_info",task_info);
 
 //        Log.e("sent_location",sent_location);
-        startActivity(intent);
+                startActivity(intent);
+            }
 
     }
     //add

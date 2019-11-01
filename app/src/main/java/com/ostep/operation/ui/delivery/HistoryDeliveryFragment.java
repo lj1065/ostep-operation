@@ -50,10 +50,14 @@ public class HistoryDeliveryFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view= inflater.inflate(R.layout.home_fragment_layout , container, false);
-        listView = (ListView)view.findViewById(R.id.listview);
-        List<Map<String, Object>> list = getData();
-        listView.setAdapter(new DeliveryTaskListViewAdapter(getActivity(), list));
+//        View view= inflater.inflate(R.layout.home_fragment_layout , container, false);
+          View view= inflater.inflate(R.layout.activity_history , container, false);
+
+//        listView = (ListView)view.findViewById(R.id.listview);
+//        List<Map<String, Object>> list = getData();
+//        listView.setAdapter(new DeliveryTaskListViewAdapter(getActivity(), list));
+//
+//
 //        adapter = new SimpleAdapter(DeliveryTaskListViewAdapter,list,R.layout.home_fragment_layout
 //                ,new String[]{"image","task_id","desc"}
 //                ,new int[]{R.id.image,R.id.task_id,R.id.desc});

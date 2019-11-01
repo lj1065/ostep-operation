@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -41,6 +42,7 @@ public class DeliverListActivity extends AppCompatActivity {
     private TextView task_id;
     private TextView dest_position;
     private TextView dest_address;
+    private TextView dest_address_show;
     private String task_id_num;
     private List<Map<String, Object>> data;
 
@@ -63,6 +65,7 @@ public class DeliverListActivity extends AppCompatActivity {
         task_id = (TextView) findViewById(R.id.task_id);
         dest_position = (TextView) findViewById(R.id.dest_position);
         dest_address = (TextView) findViewById(R.id.dest_address);
+        dest_address_show = (TextView) findViewById(R.id.dest_address_show);
     }
 
     //post方式提交数据去服务器验证
@@ -184,8 +187,16 @@ public class DeliverListActivity extends AppCompatActivity {
 
                         task_id.setText(data.get(s).get("ship_no").toString());
                         dest_position.setText(data.get(s).get("dest_position").toString());
-                        dest_address.setText(data.get(s).get("dest_address").toString());
 
+
+                        String show_data = data.get(s).get("dest_address").toString();
+                        show_data = show_data.replace("{","");
+                        show_data = show_data.replace("}","");
+                        show_data = show_data.replace("\"","");
+                        show_data = show_data.replace(",","\n");
+
+                        dest_address.setText(data.get(s).get("dest_address").toString());
+                        dest_address_show.setText(show_data);
 
 //                JSONArray orderNos = (JSONArray) data.get(s).get("ship_order_nos");
 //                Log.e("DELIVERY_TASKS_INFO",orderNos+"");

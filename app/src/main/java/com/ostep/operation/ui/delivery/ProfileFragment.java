@@ -47,17 +47,21 @@ public class ProfileFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.home_fragment_layout,null);
 
+
+        View view = inflater.inflate(R.layout.activity_profile,null);
+
+//        View view = inflater.inflate(R.layout.home_fragment_layout,null);
+//
         listView = (ListView)view.findViewById(R.id.listview);
         List<Map<String, Object>> list=getData();
-        listView.setAdapter(new DeliveryTaskListViewAdapter(getActivity(), list));
-
-
-
-        TextView textView = (TextView) view.findViewById(R.id.title_from);
-        TextView content = (TextView) view.findViewById(R.id.fragment_content);
-        textView.setText(mFrom);
+//        listView.setAdapter(new DeliveryTaskListViewAdapter(getActivity(), list));
+//listView.addFooterView();
+//
+//
+//        TextView textView = (TextView) view.findViewById(R.id.title_from);
+//        TextView content = (TextView) view.findViewById(R.id.fragment_content);
+//        textView.setText(mFrom);
 //        content.setText("ProfileFragment");
         return view;
     }

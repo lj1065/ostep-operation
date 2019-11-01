@@ -7,7 +7,16 @@
 
     tools:context=".baidu.navi.sdkdemo.activity.location.MyLocationActivity"
     >
-
+    <TextView
+        android:id="@+id/arr_len"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="unset"
+        android:text="0"
+        android:textColor="#FFF"
+        android:textSize="16sp"
+        android:visibility="gone"
+        />
     <com.baidu.mapapi.map.MapView
         android:id="@+id/bmapView"
         android:layout_width="match_parent"
@@ -17,46 +26,46 @@
         android:focusable="true">
 
     </com.baidu.mapapi.map.MapView>
-<!--    <LinearLayout-->
-<!--        android:layout_width="40dp"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_alignParentLeft="true"-->
-<!--        android:layout_alignParentBottom="true"-->
-<!--        android:layout_marginLeft="10dp"-->
-<!--        android:layout_marginBottom="120dp"-->
-<!--        android:background="#FFF"-->
-<!--        android:orientation="vertical"-->
-<!--        android:paddingLeft="5dp"-->
-<!--        android:paddingRight="5dp"-->
-<!--        tools:visibility="gone">-->
+    <LinearLayout
+        android:layout_width="40dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="10dp"
+        android:layout_marginBottom="120dp"
+        android:background="#FFF"
+        android:orientation="vertical"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
+        tools:visibility="visible">
 
-<!--        <ImageView-->
-<!--            android:id="@+id/add_scale"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_gravity="center_horizontal"-->
-<!--            android:paddingLeft="8dp"-->
-<!--            android:paddingTop="12dp"-->
-<!--            android:paddingRight="8dp"-->
-<!--            android:paddingBottom="12dp"-->
-<!--            android:src="@drawable/ic_track_explore_zoomin_focus" />-->
+        <ImageView
+            android:id="@+id/add_scale"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:paddingLeft="8dp"
+            android:paddingTop="12dp"
+            android:paddingRight="8dp"
+            android:paddingBottom="12dp"
+            android:src="@drawable/ic_track_explore_zoomin_focus" />
 
-<!--        <View-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="0.1dp"-->
-<!--            android:background="#22000000" />-->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.1dp"
+            android:background="#22000000" />
 
-<!--        <ImageView-->
-<!--            android:id="@+id/low_scale"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_gravity="center_horizontal"-->
-<!--            android:paddingLeft="8dp"-->
-<!--            android:paddingTop="12dp"-->
-<!--            android:paddingRight="8dp"-->
-<!--            android:paddingBottom="12dp"-->
-<!--            android:src="@drawable/ic_track_explore_zoomout_dis" />-->
-<!--    </LinearLayout>-->
+        <ImageView
+            android:id="@+id/low_scale"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:paddingLeft="8dp"
+            android:paddingTop="12dp"
+            android:paddingRight="8dp"
+            android:paddingBottom="12dp"
+            android:src="@drawable/ic_track_explore_zoomout_dis" />
+    </LinearLayout>
 
     <ImageView
         android:id="@+id/my_location"
@@ -129,7 +138,8 @@
             android:layout_marginTop="10dp"
             android:background="@drawable/add_poi_map_selection_btn_pressed"
             android:scaleType="centerInside"
-            android:src="@drawable/icon_select_point" />
+            android:src="@drawable/icon_select_point"
+            android:visibility="gone"/>
     </LinearLayout>
 
     <TextView
@@ -188,13 +198,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_above="@id/mylocation_text"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true"
-        android:layout_marginStart="5dp"
-        android:layout_marginLeft="325dp"
+        android:layout_marginBottom="10dp"
         android:layout_marginRight="10dp"
-        android:layout_marginBottom="100dp"
         android:background="#00123456"
         android:src="@drawable/start_go_bg" />
 
@@ -218,7 +224,8 @@
             android:layout_marginTop="10dp"
             android:background="@drawable/img_border"
             android:scaleType="fitXY"
-            android:src="@drawable/image2" />
+            android:src="@drawable/image2"
+            android:visibility="gone"/>
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -262,6 +269,7 @@
                 android:textSize="16sp"
                 android:visibility="gone"
                 />
+
         </RelativeLayout>
     </LinearLayout>
 

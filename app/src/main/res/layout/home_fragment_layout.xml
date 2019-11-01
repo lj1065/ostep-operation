@@ -5,7 +5,12 @@
     android:background="@android:color/white"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="55dp"
+        android:background="@drawable/linearlayout_border"
+        android:layout_marginTop="10dp"
+        >
     <TextView
          android:id="@+id/title_from"
          android:layout_width="wrap_content"
@@ -29,6 +34,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
+        android:layout_marginTop="20dp"
         android:text="已选任务"
         android:textColor="@android:color/black"
         android:textSize="14sp" />
@@ -39,6 +45,7 @@
         android:text="0"
         android:textColor="@android:color/holo_red_dark"
         android:textSize="20sp"
+        android:layout_marginTop="15dp"
         android:layout_marginLeft="110dp"
         />
 
@@ -63,45 +70,50 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text=""
-        android:visibility="visible"
+        android:visibility="gone"
         />
     <TextView
     android:id="@+id/ship_no_string"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:text=""
-    android:visibility="visible"
+    android:visibility="gone"
     /><TextView
     android:id="@+id/dest_position_string"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:text=""
-    android:visibility="visible"
+    android:visibility="gone"
     /><TextView
     android:id="@+id/user_info_string"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:text=""
-    android:visibility="visible"
+    android:visibility="gone"
     />
 
     <Button
         android:id="@+id/Deliver_bt"
-        android:layout_width="wrap_content"
+        android:layout_width="80dp"
         android:layout_height="wrap_content"
         android:text="开始配送"
+        android:textColor="#FFFFFF"
         android:onClick="goToDeliver"
-        android:layout_marginLeft="300dp"
+        android:layout_marginLeft="320dp"
+        android:background="@drawable/bt_selector"
         />
+
+</RelativeLayout>
 <!--    android:layout_centerInParent="true"-->
 
      <ListView
          android:id="@+id/listview"
-         android:layout_marginTop="50dp"
+         android:layout_marginTop="66dp"
          android:layout_width="wrap_content"
          android:layout_height="wrap_content"
+         android:dividerHeight="2dp"
         >
-<!--          android:dividerHeight="5dp"-->
+
      </ListView>
 
 </RelativeLayout>

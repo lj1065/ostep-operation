@@ -67,7 +67,7 @@
         >
         <activity
             android:name="com.ostep.operation.ui.delivery.CustomTabActivity"
-            android:label="一键配送"/>
+            android:label=""/>
         <activity
             android:name="com.ostep.operation.ui.delivery.BottomTabLayoutActivity"
             android:label="BottomTabLayoutActivity"/>
