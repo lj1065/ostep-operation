@@ -17,7 +17,7 @@
             android:layout_height="20dp"
             android:layout_marginLeft="5dp"
             android:layout_marginRight="5dp"
-            android:visibility="gone" />
+            android:visibility="visible" />
 
         <CheckBox
             android:id="@+id/box"
@@ -25,7 +25,9 @@
             android:layout_height="wrap_content"
             android:onClick="ChooseBox"
             android:text=" "
-            android:textColor="#8F8F8F" />
+            android:textColor="#8F8F8F"
+            android:visibility="gone"
+            />
 
         <TextView
             android:id="@+id/desc"

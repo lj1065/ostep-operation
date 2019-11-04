@@ -10,6 +10,7 @@
         android:layout_height="55dp"
         android:background="@drawable/linearlayout_border"
         android:layout_marginTop="10dp"
+        android:visibility="gone"
         >
     <TextView
          android:id="@+id/title_from"
@@ -37,7 +38,9 @@
         android:layout_marginTop="20dp"
         android:text="已选任务"
         android:textColor="@android:color/black"
-        android:textSize="14sp" />
+        android:textSize="14sp"
+        android:visibility="gone"
+        />
     <TextView
         android:id="@+id/box_num"
         android:layout_width="wrap_content"
@@ -47,6 +50,7 @@
         android:textSize="20sp"
         android:layout_marginTop="15dp"
         android:layout_marginLeft="110dp"
+        android:visibility="gone"
         />
 
     <ProgressBar
@@ -101,14 +105,15 @@
         android:onClick="goToDeliver"
         android:layout_marginLeft="320dp"
         android:background="@drawable/bt_selector"
+        android:visibility="gone"
         />
 
 </RelativeLayout>
 <!--    android:layout_centerInParent="true"-->
-
+<!--    android:layout_marginTop="66dp"-->
      <ListView
          android:id="@+id/listview"
-         android:layout_marginTop="66dp"
+
          android:layout_width="wrap_content"
          android:layout_height="wrap_content"
          android:dividerHeight="2dp"

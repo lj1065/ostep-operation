@@ -127,7 +127,8 @@ public class LoginActivity extends AppCompatActivity {
             public void afterTextChanged(Editable s) {
                 String phone = usernameEditText.getText().toString();
                 String pwd = passwordEditText.getText().toString();
-                if (phone!=null && phone.length()==11 && pwd!=null && pwd.length()>=8){
+                //密码长度限制
+                if (phone!=null && phone.length()==11 && pwd!=null && pwd.length()>=6){
                     loginButton.setEnabled(true);
                 }
             }
