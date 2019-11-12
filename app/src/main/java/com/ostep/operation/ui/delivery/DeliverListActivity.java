@@ -1,6 +1,8 @@
 package com.ostep.operation.ui.delivery;
 
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
@@ -40,12 +42,17 @@ import okhttp3.Response;
 public class DeliverListActivity extends AppCompatActivity {
 
     private TextView task_id;
+    private TextView ship_no;
     private TextView dest_position;
     private TextView dest_address;
     private TextView dest_address_show;
     private String task_id_num;
     private List<Map<String, Object>> data;
-
+    private static final String[] authBaseArr = {
+            Manifest.permission.WRITE_EXTERNAL_STORAGE,
+            Manifest.permission.ACCESS_FINE_LOCATION
+    };
+    private static final int authBaseRequestCode = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,11 +70,38 @@ public class DeliverListActivity extends AppCompatActivity {
 
         //获取控件
         task_id = (TextView) findViewById(R.id.task_id);
+        ship_no =(TextView) findViewById(R.id.ship_no);
         dest_position = (TextView) findViewById(R.id.dest_position);
         dest_address = (TextView) findViewById(R.id.dest_address);
         dest_address_show = (TextView) findViewById(R.id.dest_address_show);
+        task_id.setText(task_id_num);
+        initNavi();
     }
+    private void initNavi() {
+        // 申请权限
+        if (android.os.Build.VERSION.SDK_INT >= 23) {
+            if (!hasBasePhoneAuth()) {
+                this.requestPermissions(authBaseArr, authBaseRequestCode);
+                return;
+            }
+        }
 
+//        if (BaiduNaviManagerFactory.getBaiduNaviManager().isInited()) {
+//            return;
+//        }
+//
+//
+    }
+    private boolean hasBasePhoneAuth() {
+        PackageManager pm = this.getPackageManager();
+        for (String auth : authBaseArr) {
+            if (pm.checkPermission(auth, this.getPackageName()) != PackageManager
+                    .PERMISSION_GRANTED) {
+                return false;
+            }
+        }
+        return true;
+    }
     //post方式提交数据去服务器验证
 //    public void getSubmit() {
 //        //获取输入框的name、PumpNum和WorkstationID
@@ -154,10 +188,20 @@ public class DeliverListActivity extends AppCompatActivity {
                 try {
                     Response response = client.newCall(request).execute();
                     String resBody = response.body().string();
-                    Log.d("DeliveryListFragment", " task list: " + resBody);
+//                    Log.d("DeliveryListFragment", " task list: " + resBody);
+                    Log.e("DeliveryListFragment", resBody);
+                    Log.e("DeliveryListFragment", "ssssssssssssssssssssss");
+                    /****
+                     * {"result_code":200,"msg":"success","timestamp":1573358069666,"data":[{"ship_no":"ship112019102902302071","order_no":"OSTEP112019102902300980","order_type":0,"ship_price":0,"ship_status":1,"d_code":"bazhong_001","start_position":null,"dest_position":"106.7659450000,31.8389660000","start_address":null,"dest_address":"{\"address\":\"四川省巴中市巴州区将军大道477号\",\"clientName\":\"土家十大碗\",\"createTime\":1569942580000,\"id\":33,\"lat\":31.8389660000,\"lng\":106.7659450000,\"phone\":\"18519233682\",\"receiver\":\"颜强\",\"updateTime\":1569942580000,\"userId\":11}","ship_time":null,"create_time":"2019-10-28T18:30:20.000+0000","start_time":"2019-10-30T00:00:00.000+0000","end_time":"2019-10-30T01:00:00.000+0000","tips":null,"update_time":"2019-10-28T18:30:20.000+0000","deliver_info":null,"delivery_time":"8:00-9:00","order_info":null,"client_name":null}]}
+                     */
+//                    String String1 = "{\"result_code\":200,\"msg\":\"success\",\"timestamp\":1573358069666,\"data\":[{\"ship_no\":\"ship112019102902302071\",\"order_no\":\"OSTEP112019102902300980\",\"order_type\":0,\"ship_price\":0,\"ship_status\":1,\"d_code\":\"bazhong_001\",\"start_position\":null,\"dest_position\":\"106.7659450000,31.8389660000\",\"start_address\":null,\"dest_address\":\"{\\\"address\\\":\\\"四川省巴中市巴州区将军大道477号\\\",\\\"clientName\\\":\\\"土家十大碗\\\",\\\"createTime\\\":1569942580000,\\\"id\\\":33,\\\"lat\\\":31.8389660000,\\\"lng\\\":106.7659450000,\\\"phone\\\":\\\"18519233682\\\",\\\"receiver\\\":\\\"颜强\\\",\\\"updateTime\\\":1569942580000,\\\"userId\\\":11}\",\"ship_time\":null,\"create_time\":\"2019-10-28T18:30:20.000+0000\",\"start_time\":\"2019-10-30T00:00:00.000+0000\",\"end_time\":\"2019-10-30T01:00:00.000+0000\",\"tips\":null,\"update_time\":\"2019-10-28T18:30:20.000+0000\",\"deliver_info\":null,\"delivery_time\":\"8:00-9:00\",\"order_info\":null,\"client_name\":null},{\"ship_no\":\"ship112019102902302071\",\"order_no\":\"OSTEP112019102902300980\",\"order_type\":0,\"ship_price\":0,\"ship_status\":1,\"d_code\":\"bazhong_001\",\"start_position\":null,\"dest_position\":\"106.7659450000,31.8389660000\",\"start_address\":null,\"dest_address\":\"{\\\"address\\\":\\\"四川省巴中市巴州区将军大道477号\\\",\\\"clientName\\\":\\\"土家十大碗\\\",\\\"createTime\\\":1569942580000,\\\"id\\\":33,\\\"lat\\\":31.8389660000,\\\"lng\\\":106.7659450000,\\\"phone\\\":\\\"18519233682\\\",\\\"receiver\\\":\\\"颜强\\\",\\\"updateTime\\\":1569942580000,\\\"userId\\\":11}\",\"ship_time\":null,\"create_time\":\"2019-10-28T18:30:20.000+0000\",\"start_time\":\"2019-10-30T00:00:00.000+0000\",\"end_time\":\"2019-10-30T01:00:00.000+0000\",\"tips\":null,\"update_time\":\"2019-10-28T18:30:20.000+0000\",\"deliver_info\":null,\"delivery_time\":\"8:00-9:00\",\"order_info\":null,\"client_name\":null}]}";
                     WebResponseBody webResponseBody = JSONObject.parseObject(resBody, WebResponseBody.class);
+//                    WebResponseBody webResponseBody = JSONObject.parseObject(String1, WebResponseBody.class);
+
                     if (webResponseBody.getResult_code() == 200) {
+
                         Log.e("DeliveryList", String.valueOf((List<Map<String, Object>>) webResponseBody.getData()));
+
                         return (List<Map<String, Object>>) webResponseBody.getData();
                     } else {
                         return null;
@@ -176,31 +220,60 @@ public class DeliverListActivity extends AppCompatActivity {
                 super.onPostExecute(o);
                 //           String s= (String) o;
                 data = (List<Map<String, Object>>)o;
-                if(data.isEmpty())
+                Log.e("datadata",data.toString());
+            /**
+             * [{"delivery_time":"9:00-10:00","d_code":"bazhong_001","dest_position":"106.7659450000,31.8389660000","order_no":"OSTEP11201910261730187","update_time":"2019-10-26T19:52:22.000+0000","dest_address":"{\"address\":\"四川省巴中市巴州区将军大道477号\",\"createTime\":1569942580000,\"id\":33,\"lat\":31.8389660000,\"lng\":106.7659450000,\"phone\":\"18519233682\",\"receiver\":\"颜强\",\"updateTime\":1569942580000,\"userId\":11}","ship_status":1,"end_time":"2019-09-06T01:00:00.000+0000","ship_price":0,"create_time":"2019-10-26T09:30:30.000+0000","start_time":"2019-09-06T01:00:00.000+0000","ship_no":"ship112019102617303011","order_type":0},{"delivery_time":"9:00-10:00","d_code":"bazhong_001","dest_position":"106.7659450000,31.8389660000","order_no":"OSTEP11201910261730187","update_time":"2019-10-26T19:52:22.000+0000","dest_address":"{\"address\":\"三亚\",\"createTime\":1569942580000,\"id\":33,\"lat\":31.8389660000,\"lng\":106.7659450000,\"phone\":\"18519233682\",\"receiver\":\"冷静\",\"updateTime\":1569942580000,\"userId\":11}","ship_status":1,"end_time":"2019-09-06T01:00:00.000+0000","ship_price":0,"create_time":"2019-10-26T09:30:30.000+0000","start_time":"2019-09-06T01:00:00.000+0000","ship_no":"ship112019102617303011","order_type":0}]
+             **/
+
+//            String String1 = "{\"result_code\":200,\"msg\":\"success\",\"timestamp\":1573358069666,\"data\":[{\"delivery_time\":\"9:00-10:00\",\"d_code\":\"bazhong_001\",\"dest_position\":\"106.7659450000,31.8389660000\",\"order_no\":\"OSTEP11201910261730187\",\"update_time\":\"2019-10-26T19:52:22.000+0000\",\"dest_address\":\"{\"address\":\"四川省巴中市巴州区将军大道477号\",\"createTime\":1569942580000,\"id\":33,\"lat\":31.8389660000,\"lng\":106.7659450000,\"phone\":\"18519233682\",\"receiver\":\"颜强\",\"updateTime\":1569942580000,\"userId\":11}\",\"ship_status\":1,\"end_time\":\"2019-09-06T01:00:00.000+0000\",\"ship_price\":0,\"create_time\":\"2019-10-26T09:30:30.000+0000\",\"start_time\":\"2019-09-06T01:00:00.000+0000\",\"ship_no\":\"ship112019102617303011\",\"order_type\":0},{\"delivery_time\":\"9:00-10:00\",\"d_code\":\"bazhong_001\",\"dest_position\":\"106.7659450000,31.8389660000\",\"order_no\":\"OSTEP11201910261730187\",\"update_time\":\"2019-10-26T19:52:22.000+0000\",\"dest_address\":\"{\"address\":\"四川省巴中市巴州区将军大道477号\",\"createTime\":1569942580000,\"id\":33,\"lat\":31.8389660000,\"lng\":106.7659450000,\"phone\":\"18519233682\",\"receiver\":\"颜强\",\"updateTime\":1569942580000,\"userId\":11}\",\"ship_status\":1,\"end_time\":\"2019-09-06T01:00:00.000+0000\",\"ship_price\":0,\"create_time\":\"2019-10-26T09:30:30.000+0000\",\"start_time\":\"2019-09-06T01:00:00.000+0000\",\"ship_no\":\"ship112019102617303011\",\"order_type\":0}]]}";
+//
+//            WebResponseBody data1 = JSONObject.parseObject(String1, WebResponseBody.class);
+//
+////            JSONObject data1 =JSONObject.parseObject(String1);
+//            data = (List<Map<String, Object>>) data1.getData();
+
+            if(data.isEmpty())
                 {
                     String s2 = "无订单信息！";
 //                    task_id.setText(data.get(0).get("ship_no").toString());
                     Toast.makeText(DeliverListActivity.this,s2, Toast.LENGTH_SHORT).show();
                 }else {
-                    Log.e("ship_no",data.get(0).get("ship_no").toString());
+                        String adressString = "";
+//                        String taskIdString = "";
+                        String positionString = "";
+                        String ship_noString = "";
+                        Log.e("ship_no",data.get(0).get("ship_no").toString());
                     for (int s = 0; s < data.size();s++ ) {
 
-                        task_id.setText(data.get(s).get("ship_no").toString());
-                        dest_position.setText(data.get(s).get("dest_position").toString());
+//                        taskIdString = taskIdString + "," + data.get(s).get("ship_no").toString();
+
+                        ship_noString = ship_noString + "," + data.get(s).get("ship_no").toString();
+
+                        JSONObject jsonObject= JSON.parseObject(data.get(s).get("dest_address").toString());
+                        String address_String = jsonObject.getString("address");
+                        String phone_String = jsonObject.getString("phone");
+                        String receiver_String = jsonObject.getString("receiver");
+                        adressString = adressString + "," + address_String + "+"+ phone_String + "+"+receiver_String + "\n";
+
+                        positionString = positionString + "," + data.get(s).get("dest_position").toString();
 
 
-                        String show_data = data.get(s).get("dest_address").toString();
-                        show_data = show_data.replace("{","");
-                        show_data = show_data.replace("}","");
-                        show_data = show_data.replace("\"","");
-                        show_data = show_data.replace(",","\n");
-
-                        dest_address.setText(data.get(s).get("dest_address").toString());
-                        dest_address_show.setText(show_data);
 
 //                JSONArray orderNos = (JSONArray) data.get(s).get("ship_order_nos");
 //                Log.e("DELIVERY_TASKS_INFO",orderNos+"");
                     }
+
+                ship_no.setText(ship_noString);
+                dest_position.setText(positionString);
+//                String show_data = data.get(s).get("dest_address").toString();
+//                show_data = show_data.replace("{","");
+//                show_data = show_data.replace("}","");
+//                show_data = show_data.replace("\"","");
+//                show_data = show_data.replace(",","\n");
+
+                dest_address.setText(adressString);
+                dest_address_show.setText(adressString);
+
                 }
 
 //            JSONArray orderNos = (JSONArray)data.get(0).get("dest_position");
@@ -249,27 +322,38 @@ public class DeliverListActivity extends AppCompatActivity {
          SDKInitializer.initialize(getApplicationContext());//在Application的onCreate()不行，必须在activity的onCreate()中
          //add
          Intent intent = new Intent(DeliverListActivity.this, MyLocationActivity.class);
-         String sent_location = dest_position.getText().toString();
+
+
+
+
+
+//         String sent_location = ;
 
          String dest_address_String = dest_address.getText().toString();
+//delete the /n
+         dest_address_String = dest_address_String.replace("\n","");
 //         String sent_receiver = dest_receiver.getText().toString();
 
 
-         JSONObject jsonObject= JSON.parseObject(dest_address_String);
-         String address_String = jsonObject.getString("address");
-         String phone_String = jsonObject.getString("phone");
-         String receiver_String = jsonObject.getString("receiver");
-
-         String user_info_string =  address_String + "+" + phone_String + "+" +receiver_String;
+//         JSONObject jsonObject= JSON.parseObject(dest_address_String);
+//         String address_String = jsonObject.getString("address");
+//         String phone_String = jsonObject.getString("phone");
+//         String receiver_String = jsonObject.getString("receiver");
+//
+//         String user_info_string =  address_String + "+" + phone_String + "+" +receiver_String;
 //         String sent_phone = "18519233682";
 //         String sent_receiver = "颜强";
 
-         intent.putExtra("sent_location",sent_location);
-         intent.putExtra("user_info",user_info_string);
+         intent.putExtra("ship_no", ship_no.getText().toString());
+         intent.putExtra("task_id",  task_id.getText().toString());
+         intent.putExtra("sent_location",dest_position.getText().toString());
+         intent.putExtra("user_info",dest_address_String);
 
-//         intent.getStringExtra();
-         Log.e("sent_location",sent_location);
+         Log.e("sent_location",dest_position.getText().toString());
          startActivity(intent);
 
      }
+
+
+
 }
