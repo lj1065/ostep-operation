@@ -30,5 +30,30 @@
     <string name="bt_ok">确认</string>
     <!--    add-->
 
+    <string name="title_style">历史任务</string>
+    <string name="title_example">我</string>
+    <string name="title_practice">今日任务</string>
+
+    <string name="title_activity_index_main">Refresh</string>
+
+    <string name="fragment_refresh_styles">风格展示</string>
+    <string name="fragment_refresh_example">使用示例</string>
+    <string name="fragment_refresh_practice">实战</string>
+
+    <string name="item_example_number_title">第%02d条数据</string>
+    <string name="item_example_number_abstract">这是测试的第%02d条数据</string>
+
+    <string name="fragment_example_empty_layout">空页面</string>
+    <string name="fragment_example_empty_layout_inner">空页面-内部嵌套</string>
+    <string name="fragment_example_empty_layout_outer">空页面-外部嵌套</string>
+    <string name="fragment_example_bottom_sheet">Bottom Sheet 对话框</string>
+    <string name="index_example_bottom_sheet">BottomSheet内部使用加载更多</string>
+
+    <string name="index_example_empty">整合空页面</string>
+
+    <string name="instant_message_input_hint">输入消息</string>
+    <string name="instant_message_send">发送</string>
+
+    <string name="fragment_practice_instant">即时通讯</string>
 
 </resources>

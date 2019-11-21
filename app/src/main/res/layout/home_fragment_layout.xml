@@ -1,17 +1,65 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
-    android:background="@android:color/white"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-    <RelativeLayout
-        android:layout_width="wrap_content"
-        android:layout_height="55dp"
-        android:background="@drawable/linearlayout_border"
-        android:layout_marginTop="10dp"
-        android:visibility="gone"
-        >
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.ostep.operation.ui.fragment.index.RefreshPracticeFragment">
+<!--<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
+<!--    xmlns:app="http://schemas.android.com/apk/res-auto"-->
+<!--    android:orientation="vertical"-->
+<!--    android:background="@android:color/white"-->
+<!--    android:layout_width="match_parent"-->
+<!--    android:layout_height="match_parent">-->
+
+
+<!--    11.21 add-->
+    <androidx.appcompat.widget.Toolbar style="@style/AppTheme.Toolbar"
+        android:id="@id/toolbar"
+        app:title="@string/fragment_refresh_practice"/>
+    <com.scwang.smartrefresh.layout.SmartRefreshLayout
+        android:id="@+id/refreshLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:srlEnableFooterTranslationContent="true"
+        app:srlPrimaryColor="@color/colorTextContent"
+        app:srlEnableAutoLoadMore="false">
+        <com.scwang.smartrefresh.layout.header.ClassicsHeader
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:srlPrimaryColor="@color/colorPrimary"
+            app:srlAccentColor="@android:color/white"
+            app:srlDrawableProgress="@drawable/animation_loading_frame"/>
+        <!--        <android.support.v7.widget.RecyclerView-->
+        <ListView
+            android:id="@+id/listview"
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:dividerHeight="2dp"
+            />
+<!--        <androidx.recyclerview.widget.RecyclerView-->
+<!--            android:id="@+id/recyclerView"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:background="@android:color/white"-->
+<!--            android:overScrollMode="never"-->
+<!--            tools:listitem="@android:layout/simple_list_item_2"/>-->
+        <com.scwang.smartrefresh.header.MaterialHeader
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+    </com.scwang.smartrefresh.layout.SmartRefreshLayout>
+
+
+    <!--    11.21 add-->
+<!--    <RelativeLayout-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="55dp"-->
+<!--        android:background="@drawable/linearlayout_border"-->
+<!--        android:layout_marginTop="10dp"-->
+<!--        android:visibility="gone"-->
+<!--        >-->
     <TextView
          android:id="@+id/title_from"
          android:layout_width="wrap_content"
@@ -102,23 +150,23 @@
         android:layout_height="wrap_content"
         android:text="开始配送"
         android:textColor="#FFFFFF"
-        android:onClick="goToDeliver"
+
         android:layout_marginLeft="320dp"
         android:background="@drawable/bt_selector"
         android:visibility="gone"
         />
+<!--    android:onClick="goToDeliver"-->
 
-</RelativeLayout>
+
+
+<!--</RelativeLayout>-->
 <!--    android:layout_centerInParent="true"-->
 <!--    android:layout_marginTop="66dp"-->
-     <ListView
-         android:id="@+id/listview"
 
-         android:layout_width="wrap_content"
-         android:layout_height="wrap_content"
-         android:dividerHeight="2dp"
-        >
+<!--    11.21 change-->
 
-     </ListView>
+<!--             11.21 change-->
 
-</RelativeLayout>
+
+<!--</RelativeLayout>-->
+</LinearLayout>

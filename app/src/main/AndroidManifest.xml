@@ -136,6 +136,21 @@
             android:process=":remote">
         </service>
         <activity android:name="com.ostep.operation.ui.delivery.DeliverListActivity"/>
+
+        <activity android:name="com.ostep.operation.ui.IndexMainActivity"/>
+
+        <activity android:name="com.ostep.operation.ui.ExperimentActivity"/>
+        <activity android:name="com.ostep.operation.ui.FragmentActivity"/>
+
+        <activity android:name="com.ostep.operation.ui.fragment.example.EmptyLayoutExampleFragment"/>
+        <activity android:name="com.ostep.operation.ui.fragment.example.BottomSheetExampleFragment"/>
+        <activity android:name="com.ostep.operation.ui.fragment.index.RefreshExampleFragment"/>
+        <activity android:name="com.ostep.operation.ui.fragment.index.RefreshPracticeFragment"/>
+        <activity android:name="com.ostep.operation.ui.fragment.index.RefreshStylesFragment"/>
+
+        <activity android:name="com.ostep.operation.ui.fragment.practice.InstantPracticeFragment"/>
+
+
     </application>
 
 </manifest>
