@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <LinearLayout
+    <RelativeLayout
         android:id="@+id/line"
         android:layout_width="match_parent"
         android:layout_height="55dp"
@@ -17,7 +17,7 @@
             android:layout_height="20dp"
             android:layout_marginLeft="5dp"
             android:layout_marginRight="5dp"
-            android:visibility="visible" />
+            android:visibility="invisible" />
 
         <CheckBox
             android:id="@+id/box"
@@ -33,17 +33,27 @@
             android:id="@+id/desc"
             android:layout_width="40dp"
             android:layout_height="24dp"
-            android:layout_marginLeft="5dp"
-            android:layout_marginRight="5dp"
-            android:textColor="#666872" />
+
+            android:textColor="#666872"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="20dp"
+            />
 
         <TextView
             android:id="@+id/task_id"
-            android:layout_width="80dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
-            android:layout_marginRight="5dp"
-            android:layout_marginTop="-10dp"
+
+            android:layout_marginStart="10dp"
+            android:layout_marginLeft="0dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginRight="241dp"
+            android:layout_toStartOf="@+id/status"
+            android:layout_toLeftOf="@+id/desc"
+            android:layout_toEndOf="@+id/desc"
+            android:layout_toRightOf="@+id/desc"
             android:textColor="#666872"
             android:textSize="12sp" />
 
@@ -51,8 +61,13 @@
             android:id="@+id/status"
             android:layout_width="80dp"
             android:layout_height="24dp"
-            android:layout_marginLeft="5dp"
-            android:layout_marginRight="5dp"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="0dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginRight="241dp"
+            android:layout_toStartOf="@+id/Deliver"
+            android:layout_toLeftOf="@+id/Deliver"
             android:textColor="#FF0000" />
 
         <Button
@@ -63,11 +78,12 @@
             android:layout_marginRight="5dp"
             android:background="@drawable/bt_selector"
             android:onClick="Deliver"
+            android:layout_alignParentRight="true"
             android:text="详细"
             android:textColor="#FFFFFF" />
 
-    </LinearLayout>
-
+<!--    </LinearLayout>-->
+    </RelativeLayout>
     <TextView
         android:id="@+id/info"
         android:layout_width="wrap_content"
@@ -76,7 +92,10 @@
         android:visibility="gone"
         android:textColor="#666872" />
 
-
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="#DEDEDE" />
 
 
 <!--    <com.google.android.material.chip.Chip-->

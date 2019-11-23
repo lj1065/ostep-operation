@@ -59,6 +59,7 @@ public class CustomTabActivity extends AppCompatActivity implements CustomTabVie
         Intent intent = getIntent();
         String userInfoStr = intent.getStringExtra(CommonConstants.USER_INFO);
         userInfo = JSON.parseObject(userInfoStr, UserInfo.class);
+
         setContentView(R.layout.custom_tab_ac_layout);
         mFragmensts = DataGenerator.getFragments("");
         initView();

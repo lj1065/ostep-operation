@@ -37,8 +37,15 @@
 
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:dividerHeight="2dp"
+
+            android:divider="@null"
+            android:fadingEdge="none"
+            android:headerDividersEnabled="false"
+            android:footerDividersEnabled="false"
+            android:dividerHeight="0dp"
             />
+<!--        android:footerDividersEnabled="false"-->
+<!--        android:headerDividersEnabled="true"-->
 <!--        <androidx.recyclerview.widget.RecyclerView-->
 <!--            android:id="@+id/recyclerView"-->
 <!--            android:layout_width="match_parent"-->

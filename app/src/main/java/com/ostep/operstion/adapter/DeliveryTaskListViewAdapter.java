@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.alibaba.fastjson.JSONArray;
@@ -42,7 +43,9 @@ public class DeliveryTaskListViewAdapter extends BaseAdapter {
         public TextView task_id;
         public TextView status;
         public Button Deliver;
-        public LinearLayout line;
+
+        public RelativeLayout line;
+//        public LinearLayout line;
         public CheckBox box;
     }
     @Override
@@ -77,7 +80,8 @@ public class DeliveryTaskListViewAdapter extends BaseAdapter {
             zujian.task_id=(TextView)convertView.findViewById(R.id.task_id);
             zujian.status=(TextView)convertView.findViewById(R.id.status);
             zujian.Deliver=(Button)convertView. findViewById(R.id.Deliver);
-            zujian.line=(LinearLayout)convertView. findViewById(R.id.line);
+            zujian.line=(RelativeLayout)convertView. findViewById(R.id.line);
+//            zujian.line=(LinearLayout)convertView. findViewById(R.id.line);
             zujian.box=(CheckBox)convertView. findViewById(R.id.box);
             convertView.setTag(zujian);
         }else{

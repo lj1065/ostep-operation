@@ -44,4 +44,10 @@
     android:background="?android:attr/windowBackground"
     app:menu="@menu/navigation" />
 
+<!--    <TextView-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:id="@+id/userInfo"-->
+<!--        android:text=""-->
+<!--        />-->
 </LinearLayout>
