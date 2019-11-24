@@ -14,38 +14,40 @@ import java.util.Map;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
+import com.step.operation.common.UrlConstants;
 
 public class TaskRefresh {
 
-    private static String START_TASK = "https://api.ostep.com.cn/ostep/ship/task/start?task_id=%s";//shiptask2019102000035827
-    private static String COMPLETE_TASK = "https://api.ostep.com.cn/ostep/ship/task/complete?task_id=%s";//shiptask2019102000035827
-    private static String START_ORDER = "https://api.ostep.com.cn/ostep/ship/order/start?ship_order_no=%s";//ship132019082917384512
-    private static String COMPLETE_ORDER = "https://api.ostep.com.cn/ostep/ship/order/complete?ship_order_no=%s";//ship132019082917454151
+//    private static String START_TASK = "https://api.ostep.com.cn/ostep/ship/task/start?task_id=%s";//shiptask2019102000035827
+//    private static String COMPLETE_TASK = "https://api.ostep.com.cn/ostep/ship/task/complete?task_id=%s";//shiptask2019102000035827
+//    private static String START_ORDER = "https://api.ostep.com.cn/ostep/ship/order/start?ship_order_no=%s";//ship132019082917384512
+//    private static String COMPLETE_ORDER = "https://api.ostep.com.cn/ostep/ship/order/complete?ship_order_no=%s";//ship132019082917454151
 
 
-   public boolean startTask(Object[] objects)
+   public static boolean startTask(String objects)
    {
-       return getData(objects,START_TASK);
+       return getData(objects,UrlConstants.DELIVERY_TASk_COMPLETE);
    }
 
-    public boolean completeTask(Object[] objects)
+    public static boolean completeTask(String objects)
     {
-        return getData(objects,COMPLETE_TASK);
+        return getData(objects,UrlConstants.DELIVERY_TASK_START);
     }
-    public boolean startShipOrder(Object[] objects)
+    public static boolean startShipOrder(String objects)
     {
-        return getData(objects,START_ORDER);
+        return getData(objects,UrlConstants.DELIVERY_SHIP_START);
     }
-    public boolean completeShipOrder(Object[] objects)
+    public static boolean completeShipOrder(String objects)
     {
-        return getData(objects,COMPLETE_ORDER);
+        return getData(objects,UrlConstants.DELIVERY_SHIP_COMPLETE);
     }
 
-    public boolean getData(Object[] objects ,String MODE)
+    public static boolean getData(String objects, String MODE)
     {
-        String ship_order_no=objects[0].toString();
+//        String ship_order_no=objects[0].toString();
+        String ship_order_no = objects;
         String fullGetMyTaskUrl = String.format(MODE,ship_order_no);
-//                Log.e("fullGetMyTaskUrl",fullGetMyTaskUrl);
+                Log.e("fullGetMyTaskUrl",fullGetMyTaskUrl);
 //                return null;
         OkHttpClient client = new OkHttpClient();
         Request request = new Request.Builder().url(fullGetMyTaskUrl).build();
@@ -55,13 +57,13 @@ public class TaskRefresh {
 
             WebResponseBody webResponseBody = JSONObject.parseObject(resBody, WebResponseBody.class);
             if (webResponseBody.getResult_code() == 200) {
-                //Log.e("DeliveryList", String.valueOf((List<Map<String, Object>>) webResponseBody.getData()));
+                Log.e("getDatastatus", "true");
                 return true;
             } else {
                 return false;
             }
-        } catch (IOException e) {
-            Log.d("MODE", " " + e);
+        } catch (Exception e) {
+            Log.d("MODEMODE", " " + e);
             return false;
         }
     }

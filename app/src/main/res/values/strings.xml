@@ -56,4 +56,8 @@
 
     <string name="fragment_practice_instant">即时通讯</string>
 
+
+    <string name="setting_safe">安全设置</string>
+    <string name="setting_map">地图设置</string>
+    <string name="setting_logout">退出登录</string>
 </resources>
