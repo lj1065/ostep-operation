@@ -69,13 +69,13 @@ public class LoginActivity extends AppCompatActivity {
         final Button loginButton = findViewById(R.id.activity_login);
         final ProgressBar loadingProgressBar = findViewById(R.id.loading);
 //add
-        String userInfo = "{\"userId\":23,\"token\":\"eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxODUxOTIzMzY4MiIsImF1dGgiOlt7ImF1dGhvcml0eSI6IkFkbWluIn1dLCJpYXQiOjE1NzIyNjY2ODAsImV4cCI6MTU3NDg1ODY4MH0.bBz5M6ew0N3lqZeJAYy7EEc_Dum8UJOlcDR6M9q0wXQ\",\"role\":10,\"d_code\":\"bazhong_001\",\"opUserPhone\":\"18519233682\"}";
-//        {"userId":23,"token":"eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxODUxOTIzMzY4MiIsImF1dGgiOlt7ImF1dGhvcml0eSI6IkFkbWluIn1dLCJpYXQiOjE1NzIzNTQ4MzIsImV4cCI6MTU3NDk0NjgzMn0.vBziQsVnHzXFUUYi_W4Fw9lrqr_4NDzDzd9RDSIiREs","role":10,"d_code":"bazhong_001","opUserPhone":"18519233682"}
-
-//        Intent intent = new Intent(LoginActivity.this, CustomTabActivity.class);
-        Intent intent = new Intent(LoginActivity.this, IndexMainActivity.class);
-        intent.putExtra(CommonConstants.USER_INFO,userInfo);
-        startActivity(intent);
+//        String userInfo = "{\"userId\":23,\"token\":\"eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxODUxOTIzMzY4MiIsImF1dGgiOlt7ImF1dGhvcml0eSI6IkFkbWluIn1dLCJpYXQiOjE1NzIyNjY2ODAsImV4cCI6MTU3NDg1ODY4MH0.bBz5M6ew0N3lqZeJAYy7EEc_Dum8UJOlcDR6M9q0wXQ\",\"role\":10,\"d_code\":\"bazhong_001\",\"opUserPhone\":\"18519233682\"}";
+////        {"userId":23,"token":"eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxODUxOTIzMzY4MiIsImF1dGgiOlt7ImF1dGhvcml0eSI6IkFkbWluIn1dLCJpYXQiOjE1NzIzNTQ4MzIsImV4cCI6MTU3NDk0NjgzMn0.vBziQsVnHzXFUUYi_W4Fw9lrqr_4NDzDzd9RDSIiREs","role":10,"d_code":"bazhong_001","opUserPhone":"18519233682"}
+//
+////        Intent intent = new Intent(LoginActivity.this, CustomTabActivity.class);
+//        Intent intent = new Intent(LoginActivity.this, IndexMainActivity.class);
+//        intent.putExtra(CommonConstants.USER_INFO,userInfo);
+//        startActivity(intent);
 
      //add
         //
@@ -172,7 +172,8 @@ public class LoginActivity extends AppCompatActivity {
                         //TODO 存储token，跳转到任务也没
                         Log.e("userInfo",userInfo);
                         Toast.makeText(LoginActivity.this, "登录成功 ",Toast.LENGTH_SHORT).show();
-                        Intent intent = new Intent(LoginActivity.this, CustomTabActivity.class);
+//                        Intent intent = new Intent(LoginActivity.this, CustomTabActivity.class);
+                        Intent intent = new Intent(LoginActivity.this, IndexMainActivity.class);
                         intent.putExtra(CommonConstants.USER_INFO,userInfo);
                         startActivity(intent);
                     }else{
